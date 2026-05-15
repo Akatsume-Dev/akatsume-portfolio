@@ -665,11 +665,10 @@ select.form-input option { background: var(--dark3); }
         <p class="video-label">Simple NPC Walking System</p>
       </div>
       <div class="video-card">
-        <div style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #b8860b;color:#b8860b;font-family:inherit;gap:10px;">
-              <span style="font-size:2.5rem;">🃏</span>
-              <span style="font-size:0.95rem;font-weight:600;letter-spacing:1px;">VIDEO UPLOADING SOON</span>
-              <span style="font-size:0.75rem;color:#888;">File too large for web hosting — coming shortly</span>
-            </div>
+        <video controls style="width:100%;border-radius:8px;background:#000;">
+              <source src="videos/steal_a_card_system.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
         <p class="video-label">Steal A Card System</p>
       </div>
     </div>
@@ -778,20 +777,15 @@ select.form-input option { background: var(--dark3); }
           <p>🌍 Eastern Time (ET)</p>
         </div>
       </div>
-      <form class="contact-form" id="contactForm" action="https://formsubmit.co/charlodessenneville@gmail.com" method="POST">
-        
-        <input type="hidden" name="_subject" value="New message from Akatsume Portfolio!">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://akatsume-dev.github.io/akatsume-portfolio/?sent=true">
-        <input type="hidden" name="_template" value="table">
+      <form class="contact-form" id="contactForm">
         <div class="form-group">
-          <input type="text" name="name" placeholder="Your name / username" class="form-input" required>
+          <input type="text" name="name" id="inputName" placeholder="Your name / username" class="form-input" required>
         </div>
         <div class="form-group">
-          <input type="text" name="discord" placeholder="Your Discord" class="form-input">
+          <input type="text" name="discord" id="inputDiscord" placeholder="Your Discord" class="form-input">
         </div>
         <div class="form-group">
-          <select name="work_type" class="form-input">
+          <select name="work_type" id="inputWorkType" class="form-input">
             <option value="">Type of work needed</option>
             <option>Scripting</option>
             <option>UI</option>
@@ -799,10 +793,12 @@ select.form-input option { background: var(--dark3); }
           </select>
         </div>
         <div class="form-group">
-          <textarea name="message" placeholder="Describe your project or what you need..." class="form-input form-textarea" required></textarea>
+          <textarea name="message" id="inputMessage" placeholder="Describe your project or what you need..." class="form-input" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary full-width" id="submitBtn">🚀 Send Message</button>
-        <p class="form-status" id="formStatus"></p>
+        <div id="formSuccess" style="display:none;background:rgba(184,134,11,0.15);border:1px solid #b8860b;border-radius:8px;padding:16px;margin-bottom:16px;text-align:center;color:#b8860b;font-weight:600;">
+          ✅ Your email app will open with a pre-filled message!
+        </div>
+        <button type="submit" class="btn btn-primary full-width" id="submitBtn">Send Message</button>
       </form>
     </div>
   </div>
@@ -821,6 +817,7 @@ select.form-input option { background: var(--dark3); }
   </div>
 </footer>
 <script>
+
 // ====== NAVBAR SCROLL ======
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
@@ -926,6 +923,45 @@ if (form) {
     formStatus.style.color = 'var(--gold)';
   });
 }
+
+
+// ====== CONTACT FORM ======
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const formSuccess = document.getElementById('formSuccess');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('inputName').value.trim();
+    const discord = document.getElementById('inputDiscord').value.trim();
+    const workType = document.getElementById('inputWorkType').value;
+    const message = document.getElementById('inputMessage').value.trim();
+
+    const subject = encodeURIComponent('New Portfolio Contact - ' + (workType || 'General Inquiry'));
+    const body = encodeURIComponent(
+      'Name / Username: ' + name + '\n' +
+      'Discord: ' + (discord || 'Not provided') + '\n' +
+      'Type of Work: ' + (workType || 'Not specified') + '\n\n' +
+      'Message:\n' + message
+    );
+
+    const mailtoLink = 'mailto:charlodessenneville@gmail.com?subject=' + subject + '&body=' + body;
+    window.open(mailtoLink, '_blank');
+
+    formSuccess.style.display = 'block';
+    submitBtn.textContent = 'Sent! ✓';
+    submitBtn.disabled = true;
+
+    setTimeout(function() {
+      formSuccess.style.display = 'none';
+      submitBtn.textContent = 'Send Message';
+      submitBtn.disabled = false;
+      contactForm.reset();
+    }, 5000);
+  });
+}
+
 </script>
 </body>
 </html>
