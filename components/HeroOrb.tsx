@@ -99,11 +99,14 @@ function Particles() {
     pointsRef.current.rotation.y = state.clock.elapsedTime * 0.04
   })
 
+  const geometry = useMemo(() => {
+    const geo = new THREE.BufferGeometry()
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    return geo
+  }, [positions])
+
   return (
-    <points ref={pointsRef}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
+    <points ref={pointsRef} geometry={geometry}>
       <pointsMaterial color="#C9A84C" size={0.025} transparent opacity={0.6} sizeAttenuation />
     </points>
   )

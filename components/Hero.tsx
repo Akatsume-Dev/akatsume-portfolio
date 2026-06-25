@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState, lazy, Suspense } from 'react'
+import { useEffect, useRef, useState, Suspense } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowDown, Sparkles } from 'lucide-react'
+import dynamic from 'next/dynamic'
 
-const HeroOrb = lazy(() => import('./HeroOrb'))
+const HeroOrb = dynamic(() => import('./HeroOrb'), { ssr: false })
 
 /* ─── Particle canvas ─── */
 function ParticleCanvas() {
