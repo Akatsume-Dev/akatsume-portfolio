@@ -1,8 +1,10 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowDown, Sparkles } from 'lucide-react'
+
+const HeroOrb = lazy(() => import('./HeroOrb'))
 
 /* ─── Particle canvas ─── */
 function ParticleCanvas() {
@@ -163,120 +165,136 @@ export default function Hero() {
 
       {/* Content */}
       <motion.div
-        className="relative text-center px-6 max-w-6xl mx-auto"
+        className="relative w-full max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center"
         style={{ x: springX, y: springY, zIndex: 10 }}
       >
-        {/* Badge */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-gold-400/25 bg-gold-400/5"
-          >
-            <Sparkles size={12} className="text-gold-400" />
-            <span className="text-gold-300 text-xs font-medium tracking-widest uppercase">
-              Available for Projects
-            </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          </motion.div>
-        )}
-
-        {/* Name */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-4"
-          >
-            <span
-              className="block text-[clamp(1rem,3vw,1.25rem)] font-light tracking-[0.4em] uppercase text-white/40 mb-4"
+        {/* Left: text */}
+        <div className="text-center lg:text-left">
+          {/* Badge */}
+          {mounted && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-gold-400/25 bg-gold-400/5"
             >
-              Introducing
-            </span>
-            <h1 className="text-[clamp(4rem,14vw,11rem)] font-black leading-none tracking-tight text-gold-shimmer select-none">
-              AKATSUME
-            </h1>
-          </motion.div>
-        )}
+              <Sparkles size={12} className="text-gold-400" />
+              <span className="text-gold-300 text-xs font-medium tracking-widest uppercase">
+                Available for Projects
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            </motion.div>
+          )}
 
-        {/* Title words */}
-        {mounted && (
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6">
-            {titleWords.map((word, i) => (
-              <motion.span
-                key={word}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.6 + i * 0.12, ease: [0.23, 1, 0.32, 1] }}
-                className="text-[clamp(1.2rem,4vw,2.5rem)] font-bold tracking-widest uppercase text-white/80"
-              >
-                {i < titleWords.length - 1 ? (
-                  <>{word} <span className="text-gold-400/40">·</span></>
-                ) : word}
-              </motion.span>
-            ))}
-          </div>
-        )}
+          {/* Name */}
+          {mounted && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mb-4"
+            >
+              <span className="block text-[clamp(0.75rem,2vw,1rem)] font-light tracking-[0.4em] uppercase text-white/40 mb-4">
+                Introducing
+              </span>
+              <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-black leading-none tracking-tight text-gold-shimmer select-none">
+                AKATSUME
+              </h1>
+            </motion.div>
+          )}
 
-        {/* Tagline */}
-        {mounted && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="text-[clamp(0.9rem,2vw,1.15rem)] text-white/50 max-w-xl mx-auto leading-relaxed mb-4 font-light"
-          >
-            3 years crafting premium game systems, immersive UI, and elite mechanics for Roblox experiences players never forget.
-          </motion.p>
-        )}
+          {/* Title words */}
+          {mounted && (
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3 mb-6">
+              {titleWords.map((word, i) => (
+                <motion.span
+                  key={word}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.6 + i * 0.12, ease: [0.23, 1, 0.32, 1] }}
+                  className="text-[clamp(1rem,3vw,1.75rem)] font-bold tracking-widest uppercase text-white/80"
+                >
+                  {i < titleWords.length - 1 ? (
+                    <>{word} <span className="text-gold-400/40">·</span></>
+                  ) : word}
+                </motion.span>
+              ))}
+            </div>
+          )}
 
-        {/* Gold divider */}
+          {/* Tagline */}
+          {mounted && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="text-[clamp(0.9rem,1.5vw,1.1rem)] text-white/50 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-4 font-light"
+            >
+              3 years crafting premium game systems, immersive UI, and elite mechanics for Roblox experiences players never forget.
+            </motion.p>
+          )}
+
+          {/* Gold divider */}
+          {mounted && (
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 1.1 }}
+              className="gold-line max-w-xs mx-auto lg:mx-0 mb-10"
+            />
+          )}
+
+          {/* CTAs */}
+          {mounted && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+            >
+              <a href="#contact" className="btn-gold relative z-10 animate-pulse-gold">
+                <span className="relative z-10">Hire Me Now</span>
+              </a>
+              <a href="#showcase" className="btn-outline-gold">
+                View My Work
+              </a>
+            </motion.div>
+          )}
+
+          {/* Stats */}
+          {mounted && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+              className="flex justify-center lg:justify-start gap-10 mt-12"
+            >
+              {[
+                { num: '3+', label: 'Years Exp.' },
+                { num: '50+', label: 'Projects Done' },
+                { num: '100%', label: 'Satisfaction' },
+              ].map(s => (
+                <div key={s.label} className="text-center lg:text-left">
+                  <div className="text-2xl sm:text-3xl font-black text-gold-gradient">{s.num}</div>
+                  <div className="text-xs text-white/40 tracking-widest uppercase mt-1">{s.label}</div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </div>
+
+        {/* Right: 3D orb */}
         {mounted && (
           <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1, delay: 1.1 }}
-            className="gold-line max-w-xs mx-auto mb-10"
-          />
-        )}
-
-        {/* CTAs */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.6, ease: [0.23, 1, 0.32, 1] }}
+            className="hidden lg:flex items-center justify-center"
+            style={{ height: '520px' }}
           >
-            <a href="#contact" className="btn-gold relative z-10 animate-pulse-gold">
-              <span className="relative z-10">Hire Me Now</span>
-            </a>
-            <a href="#showcase" className="btn-outline-gold">
-              View My Work
-            </a>
-          </motion.div>
-        )}
-
-        {/* Stats */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
-            className="flex justify-center gap-12 mt-16"
-          >
-            {[
-              { num: '3+', label: 'Years Exp.' },
-              { num: '50+', label: 'Projects Done' },
-              { num: '100%', label: 'Satisfaction' },
-            ].map(s => (
-              <div key={s.label} className="text-center">
-                <div className="text-2xl sm:text-3xl font-black text-gold-gradient">{s.num}</div>
-                <div className="text-xs text-white/40 tracking-widest uppercase mt-1">{s.label}</div>
-              </div>
-            ))}
+            <Suspense fallback={null}>
+              <HeroOrb />
+            </Suspense>
           </motion.div>
         )}
       </motion.div>

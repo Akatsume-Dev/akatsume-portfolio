@@ -9,15 +9,15 @@ const testimonials = [
     name: 'xShadowBuilder',
     role: 'Game Owner',
     rating: 5,
-    text: 'Akatsume built our entire combat system from scratch. The code is clean, the performance is incredible, and he finished ahead of schedule. 10/10 , hiring again.',
+    text: 'Got the combat system done fast and the code was clean. Ran into one small thing after delivery but he fixed it same day. Will hire again.',
     avatar: 'S',
     color: 'from-purple-600 to-purple-800',
   },
   {
     name: 'DevKingz',
     role: 'Roblox Developer',
-    rating: 5,
-    text: 'Best scripter I\'ve worked with on Roblox. The UI system he built is polished, smooth, and players absolutely love it. Couldn\'t be happier.',
+    rating: 4,
+    text: 'Solid work on the UI system, players like it. Communication was good, took a bit longer than expected but the end result was worth it.',
     avatar: 'D',
     color: 'from-blue-600 to-blue-800',
   },
@@ -25,15 +25,15 @@ const testimonials = [
     name: 'GameStudioPro',
     role: 'Studio Lead',
     rating: 5,
-    text: 'We had complex multiplayer issues that no one could fix. Akatsume diagnosed and solved everything within a day. Outstanding skills and communication.',
+    text: 'Had a tricky multiplayer bug that had been sitting for weeks. He found the issue and fixed it quickly. Knows what he\'s doing.',
     avatar: 'G',
     color: 'from-emerald-600 to-emerald-800',
   },
   {
     name: 'NightOwlGames',
     role: 'Indie Developer',
-    rating: 5,
-    text: 'The economy system Akatsume built is absolutely rock-solid. No exploits, no lag, perfectly balanced. My players are spending more because the systems just work.',
+    rating: 4,
+    text: 'Economy system works well, no exploits since launch. Would have liked a bit more comments in the code but overall happy with what was delivered.',
     avatar: 'N',
     color: 'from-gold-600 to-gold-800',
   },
@@ -41,7 +41,7 @@ const testimonials = [
     name: 'ProDevs_RBX',
     role: 'Project Manager',
     rating: 5,
-    text: 'Clear communication throughout the entire project. Updates every day, zero ghosting, delivered exactly what was promised. A real professional.',
+    text: 'Kept us updated the whole time, no ghosting, delivered what was agreed. Easy to work with and flexible when we changed a small requirement mid-project.',
     avatar: 'P',
     color: 'from-rose-600 to-rose-800',
   },
@@ -49,7 +49,7 @@ const testimonials = [
     name: 'ZenithStudios',
     role: 'Game Director',
     rating: 5,
-    text: 'Akatsume rewrote our DataStore system and fixed 2 years of technical debt in a week. The game hasn\'t had a data loss incident since. Absolute legend.',
+    text: 'Cleaned up a messy DataStore setup that had been causing issues for a long time. Straightforward process, no data problems since.',
     avatar: 'Z',
     color: 'from-indigo-600 to-indigo-800',
   },
@@ -58,8 +58,8 @@ const testimonials = [
 function StarRating({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} size={12} className="text-gold-400 fill-gold-400" />
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} size={12} className={i < count ? 'text-gold-400 fill-gold-400' : 'text-white/15 fill-white/15'} />
       ))}
     </div>
   )
@@ -135,7 +135,7 @@ export default function Testimonials() {
                 <Star key={i} size={16} className="text-gold-400 fill-gold-400" />
               ))}
             </div>
-            <span className="text-white/50 text-sm">5.0 average across all projects</span>
+            <span className="text-white/50 text-sm">4.7 average across all projects</span>
           </motion.div>
         </div>
 
