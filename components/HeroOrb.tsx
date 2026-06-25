@@ -1,9 +1,14 @@
 'use client'
 
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, Component, ReactNode } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { MeshDistortMaterial } from '@react-three/drei'
 import * as THREE from 'three'
+
+class OrbErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  render() { return this.state.failed ? null : this.props.children }
+}
 
 function GoldOrb() {
   const meshRef = useRef<THREE.Mesh>(null)
@@ -12,6 +17,46 @@ function GoldOrb() {
   const groupRef = useRef<THREE.Group>(null)
 
   const ringGeo = useMemo(() => new THREE.TorusGeometry(1.65, 0.016, 8, 120), [])
+  const sphereGeo = useMemo(() => new THREE.SphereGeometry(1, 64, 64), [])
+  const innerGeo = useMemo(() => new THREE.SphereGeometry(0.82, 32, 32), [])
+
+  const goldMat = useMemo(() => new THREE.MeshStandardMaterial({
+    color: new THREE.Color('#C9A84C'),
+    emissive: new THREE.Color('#7a5c10'),
+    emissiveIntensity: 0.4,
+    metalness: 0.95,
+    roughness: 0.08,
+    transparent: true,
+    opacity: 0.95,
+  }), [])
+
+  const innerMat = useMemo(() => new THREE.MeshStandardMaterial({
+    color: new THREE.Color('#E4C76B'),
+    emissive: new THREE.Color('#C9A84C'),
+    emissiveIntensity: 0.6,
+    transparent: true,
+    opacity: 0.12,
+  }), [])
+
+  const ring1Mat = useMemo(() => new THREE.MeshStandardMaterial({
+    color: new THREE.Color('#C9A84C'),
+    emissive: new THREE.Color('#C9A84C'),
+    emissiveIntensity: 0.7,
+    metalness: 1,
+    roughness: 0.05,
+    transparent: true,
+    opacity: 0.75,
+  }), [])
+
+  const ring2Mat = useMemo(() => new THREE.MeshStandardMaterial({
+    color: new THREE.Color('#E4C76B'),
+    emissive: new THREE.Color('#E4C76B'),
+    emissiveIntensity: 0.35,
+    metalness: 1,
+    roughness: 0.05,
+    transparent: true,
+    opacity: 0.32,
+  }), [])
 
   useFrame((state) => {
     const t = state.clock.elapsedTime
@@ -33,59 +78,10 @@ function GoldOrb() {
 
   return (
     <group ref={groupRef}>
-      {/* Core distorted sphere */}
-      <mesh ref={meshRef}>
-        <sphereGeometry args={[1, 80, 80]} />
-        <MeshDistortMaterial
-          color="#C9A84C"
-          emissive="#7a5c10"
-          emissiveIntensity={0.4}
-          metalness={0.95}
-          roughness={0.08}
-          distort={0.3}
-          speed={1.5}
-          transparent
-          opacity={0.95}
-        />
-      </mesh>
-
-      {/* Inner glow */}
-      <mesh>
-        <sphereGeometry args={[0.82, 32, 32]} />
-        <meshStandardMaterial
-          color="#E4C76B"
-          emissive="#C9A84C"
-          emissiveIntensity={0.6}
-          transparent
-          opacity={0.12}
-        />
-      </mesh>
-
-      {/* Ring 1 */}
-      <mesh ref={ring1Ref} geometry={ringGeo}>
-        <meshStandardMaterial
-          color="#C9A84C"
-          emissive="#C9A84C"
-          emissiveIntensity={0.7}
-          metalness={1}
-          roughness={0.05}
-          transparent
-          opacity={0.75}
-        />
-      </mesh>
-
-      {/* Ring 2 */}
-      <mesh ref={ring2Ref} geometry={ringGeo} rotation={[Math.PI / 2 + 0.9, 0.4, 0]}>
-        <meshStandardMaterial
-          color="#E4C76B"
-          emissive="#E4C76B"
-          emissiveIntensity={0.35}
-          metalness={1}
-          roughness={0.05}
-          transparent
-          opacity={0.32}
-        />
-      </mesh>
+      <mesh ref={meshRef} geometry={sphereGeo} material={goldMat} />
+      <mesh geometry={innerGeo} material={innerMat} />
+      <mesh ref={ring1Ref} geometry={ringGeo} material={ring1Mat} />
+      <mesh ref={ring2Ref} geometry={ringGeo} material={ring2Mat} rotation={[Math.PI / 2 + 0.9, 0.4, 0]} />
     </group>
   )
 }
@@ -109,32 +105,38 @@ function Particles() {
     return g
   }, [])
 
+  const mat = useMemo(() => new THREE.PointsMaterial({
+    color: new THREE.Color('#C9A84C'),
+    size: 0.022,
+    transparent: true,
+    opacity: 0.55,
+    sizeAttenuation: true,
+  }), [])
+
   useFrame((state) => {
     if (ref.current) ref.current.rotation.y = state.clock.elapsedTime * 0.05
   })
 
-  return (
-    <points ref={ref} geometry={geo}>
-      <pointsMaterial color="#C9A84C" size={0.022} transparent opacity={0.55} sizeAttenuation />
-    </points>
-  )
+  return <points ref={ref} geometry={geo} material={mat} />
 }
 
 export default function HeroOrb() {
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <Canvas
-        camera={{ position: [0, 0, 4.5], fov: 45 }}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent' }}
-      >
-        <ambientLight intensity={0.25} />
-        <pointLight position={[4, 3, 3]} intensity={2.5} color="#C9A84C" />
-        <pointLight position={[-3, -2, -2]} intensity={1} color="#E4C76B" />
-        <pointLight position={[0, 0, 5]} intensity={0.6} color="#ffffff" />
-        <GoldOrb />
-        <Particles />
-      </Canvas>
+      <OrbErrorBoundary>
+        <Canvas
+          camera={{ position: [0, 0, 4.5], fov: 45 }}
+          gl={{ antialias: true, alpha: true }}
+          style={{ background: 'transparent' }}
+        >
+          <ambientLight intensity={0.25} />
+          <pointLight position={[4, 3, 3]} intensity={2.5} color="#C9A84C" />
+          <pointLight position={[-3, -2, -2]} intensity={1} color="#E4C76B" />
+          <pointLight position={[0, 0, 5]} intensity={0.6} color="#ffffff" />
+          <GoldOrb />
+          <Particles />
+        </Canvas>
+      </OrbErrorBoundary>
     </div>
   )
 }
