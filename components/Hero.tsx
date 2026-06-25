@@ -198,7 +198,7 @@ export default function Hero() {
               <span className="block text-[clamp(0.75rem,2vw,1rem)] font-light tracking-[0.4em] uppercase text-white/40 mb-4">
                 Introducing
               </span>
-              <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-black leading-none tracking-tight text-gold-shimmer select-none">
+              <h1 className="text-[clamp(2.8rem,7vw,6rem)] font-black leading-none tracking-tight text-gold-shimmer select-none whitespace-nowrap">
                 AKATSUME
               </h1>
             </motion.div>
