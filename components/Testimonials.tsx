@@ -9,7 +9,7 @@ const testimonials = [
     name: 'xShadowBuilder',
     role: 'Game Owner',
     rating: 5,
-    text: 'Akatsume built our entire combat system from scratch. The code is clean, the performance is incredible, and he finished ahead of schedule. 10/10 — hiring again.',
+    text: 'Akatsume built our entire combat system from scratch. The code is clean, the performance is incredible, and he finished ahead of schedule. 10/10 , hiring again.',
     avatar: 'S',
     color: 'from-purple-600 to-purple-800',
   },
@@ -65,9 +65,15 @@ function StarRating({ count }: { count: number }) {
   )
 }
 
-function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
+function TestimonialCard({ t, index }: { t: typeof testimonials[0]; index: number }) {
   return (
-    <div className="card-premium rounded-sm p-7 w-80 flex-shrink-0 flex flex-col gap-5 mx-3">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+      className="card-premium rounded-sm p-7 flex flex-col gap-5"
+    >
       <Quote size={20} className="text-gold-400/40" />
       <p className="text-white/65 text-sm leading-relaxed flex-1">"{t.text}"</p>
       <div>
@@ -82,15 +88,13 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 export default function Testimonials() {
-  const doubled = [...testimonials, ...testimonials]
-
   return (
-    <section id="testimonials" className="relative section-padding overflow-hidden">
+    <section id="testimonials" className="relative section-padding">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%)' }}
@@ -134,30 +138,14 @@ export default function Testimonials() {
             <span className="text-white/50 text-sm">5.0 average across all projects</span>
           </motion.div>
         </div>
-      </div>
 
-      {/* Marquee rows */}
-      <div className="space-y-5 -mx-6">
-        {/* Row 1 — left to right */}
-        <div className="ticker-wrap">
-          <div className="ticker-content flex" style={{ animationDuration: '35s' }}>
-            {doubled.map((t, i) => <TestimonialCard key={i} t={t} />)}
-          </div>
-        </div>
-
-        {/* Row 2 — right to left */}
-        <div className="ticker-wrap">
-          <div className="ticker-content flex" style={{ animationDuration: '40s', animationDirection: 'reverse' }}>
-            {[...doubled].reverse().map((t, i) => <TestimonialCard key={i} t={t} />)}
-          </div>
+        {/* Centered grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
+            <TestimonialCard key={t.name} t={t} index={i} />
+          ))}
         </div>
       </div>
-
-      {/* Edge fade masks */}
-      <div className="absolute inset-y-0 left-0 w-24 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(90deg, #030303, transparent)' }} />
-      <div className="absolute inset-y-0 right-0 w-24 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(-90deg, #030303, transparent)' }} />
     </section>
   )
 }

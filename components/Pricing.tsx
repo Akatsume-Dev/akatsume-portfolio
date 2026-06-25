@@ -109,7 +109,7 @@ export default function Pricing() {
             transition={{ delay: 0.2 }}
             className="text-white/50 text-lg mt-4 max-w-xl mx-auto"
           >
-            Invest in quality once. These packages are guidelines — custom quotes available for any project scope.
+            Invest in quality once. These packages are guidelines , custom quotes available for any project scope.
           </motion.p>
         </div>
 
@@ -119,14 +119,14 @@ export default function Pricing() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-          className="grid md:grid-cols-3 gap-6 items-stretch"
+          className="grid md:grid-cols-3 gap-6 items-stretch pt-6"
         >
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
               variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: plan.highlight ? 1.03 : 1, transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } },
               }}
               className={`relative rounded-sm flex flex-col overflow-hidden ${
                 plan.highlight
@@ -144,7 +144,7 @@ export default function Pricing() {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
               )}
               {plan.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="px-4 py-1 text-[10px] font-bold tracking-widest uppercase bg-gold-gradient text-dark-900 rounded-full whitespace-nowrap">
                     Most Popular
                   </span>

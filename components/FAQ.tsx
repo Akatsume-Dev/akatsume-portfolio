@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: 'How long does a project take?',
-    a: 'Timelines vary based on complexity. A single script can be ready in 24–48 hours. A full game system typically takes 3–7 days. I always give you a realistic estimate upfront — and I stick to it.',
+    a: 'Timelines vary based on complexity. A single script can be ready in 24–48 hours. A full game system typically takes 3–7 days. I always give you a realistic estimate upfront , and I stick to it.',
   },
   {
     q: 'Do you offer revisions?',
@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'How do we communicate during the project?',
-    a: 'I\'m available on Discord for real-time updates and questions. I provide daily progress updates on active projects and typically respond within a few hours. Zero ghosting — ever.',
+    a: 'I\'m available on Discord for real-time updates and questions. I provide daily progress updates on active projects and typically respond within a few hours. Zero ghosting , ever.',
   },
   {
     q: 'How do payments work?',
@@ -31,11 +31,7 @@ const faqs = [
   },
   {
     q: 'Do I get the source code?',
-    a: 'Yes — on all packages, you receive full ownership of the source code upon final payment. I don\'t retain backdoors or obfuscate scripts.',
-  },
-  {
-    q: 'Do you speak French?',
-    a: 'Oui ! Je parle couramment le français et l\'anglais. Vous pouvez me contacter dans la langue que vous préférez.',
+    a: 'Yes , on all packages, you receive full ownership of the source code upon final payment. I don\'t retain backdoors or obfuscate scripts.',
   },
 ]
 

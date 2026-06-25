@@ -59,7 +59,7 @@ export default function About() {
           animate={inView ? 'visible' : 'hidden'}
           className="grid lg:grid-cols-2 gap-20 items-center"
         >
-          {/* Left — text */}
+          {/* Left , text */}
           <div>
             <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
               <div className="h-px w-12 bg-gold-400/60" />
@@ -74,10 +74,10 @@ export default function About() {
 
             <motion.div variants={itemVariants} className="space-y-5 text-white/60 leading-relaxed text-lg">
               <p>
-                I'm <strong className="text-white font-semibold">Akatsume</strong> — a dedicated Roblox scripter with over 3 years of hands-on experience engineering the systems that make games exceptional. I don't write code for the sake of writing code; I build systems that <em className="text-gold-300 not-italic">players love</em> and <em className="text-gold-300 not-italic">clients trust</em>.
+                I'm <strong className="text-white font-semibold">Akatsume</strong> , a dedicated Roblox scripter with over 3 years of hands-on experience engineering the systems that make games exceptional. I don't write code for the sake of writing code; I build systems that <em className="text-gold-300 not-italic">players love</em> and <em className="text-gold-300 not-italic">clients trust</em>.
               </p>
               <p>
-                From fluid gameplay loops and robust data persistence to polished UI frameworks and competitive multiplayer systems — I've shipped it all. My approach blends clean architecture with a deep understanding of what makes Roblox games feel premium.
+                From fluid gameplay loops and robust data persistence to polished UI frameworks and competitive multiplayer systems , I've shipped it all. My approach blends clean architecture with a deep understanding of what makes Roblox games feel premium.
               </p>
               <p>
                 Based in the <strong className="text-white/80">Eastern timezone (ET)</strong>, I communicate fluently in both <strong className="text-white/80">French and English</strong>, ensuring crystal-clear collaboration with clients worldwide.
@@ -93,7 +93,7 @@ export default function About() {
             </motion.div>
           </div>
 
-          {/* Right — stats */}
+          {/* Right , stats */}
           <div className="space-y-6">
             {stats.map((s, i) => (
               <motion.div
@@ -122,7 +122,7 @@ export default function About() {
               <p className="text-white/50 italic text-base leading-relaxed">
                 "Every line of code I write is a commitment to quality. Your game deserves nothing less than the best."
               </p>
-              <footer className="text-gold-400/60 text-xs mt-3 tracking-widest uppercase">— Akatsume</footer>
+              <footer className="text-gold-400/60 text-xs mt-3 tracking-widest uppercase">, Akatsume</footer>
             </motion.blockquote>
           </div>
         </motion.div>

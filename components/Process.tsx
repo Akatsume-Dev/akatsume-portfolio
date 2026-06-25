@@ -23,7 +23,7 @@ const steps = [
     icon: Code2,
     number: '03',
     title: 'Development',
-    desc: 'I build every system with precision — clean code, consistent patterns, and regular progress updates so you\'re never left wondering.',
+    desc: 'I build every system with precision , clean code, consistent patterns, and regular progress updates so you\'re never left wondering.',
     duration: 'Per project',
   },
   {

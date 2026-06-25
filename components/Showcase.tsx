@@ -39,7 +39,7 @@ const projects = [
     id: 4,
     title: 'Team Deathmatch',
     category: 'Multiplayer',
-    desc: 'Full TDM implementation: team balancing, spawn management, kill feed, scoreboard, round system — production-ready.',
+    desc: 'Full TDM implementation: team balancing, spawn management, kill feed, scoreboard, round system , production-ready.',
     tags: ['Multiplayer', 'Teams', 'Round System'],
     size: 'large',
     gradient: 'from-emerald-900/30 to-dark-700',
@@ -188,7 +188,7 @@ export default function Showcase() {
           viewport={{ once: true }}
           className="text-center mt-14"
         >
-          <p className="text-white/30 text-sm mb-5">These are samples — every project I build is custom to your game.</p>
+          <p className="text-white/30 text-sm mb-5">These are samples , every project I build is custom to your game.</p>
           <a href="#contact" className="btn-gold">
             Start Your Project
           </a>

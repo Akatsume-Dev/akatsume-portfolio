@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
@@ -15,14 +15,6 @@ const skills = [
   { name: 'Custom Mechanics', level: 93, category: 'Creative' },
 ]
 
-const techStack = [
-  'RemoteEvents', 'RemoteFunctions', 'BindableEvents',
-  'DataStoreService', 'ProfileService', 'TweenService',
-  'RunService', 'HttpService', 'MemoryStoreService',
-  'InstanceNew', 'BillboardGui', 'SurfaceGui',
-  'ModuleScripts', 'OOP Patterns', 'RayCasting',
-  'CollectionService', 'Debris', 'Pathfinding',
-]
 
 function SkillBar({ skill, index, inView }: { skill: typeof skills[0]; index: number; inView: boolean }) {
   return (
@@ -107,54 +99,30 @@ export default function Skills() {
             </div>
           </div>
 
-          {/* Tech stack cloud */}
-          <div>
-            <motion.h3
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-white/50 text-xs tracking-widest uppercase mb-8 font-medium"
-            >
-              Tools & APIs I Use Daily
-            </motion.h3>
-            <div className="flex flex-wrap gap-2.5">
-              {techStack.map((tech, i) => (
-                <motion.span
-                  key={tech}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-                  transition={{ delay: 0.1 + i * 0.04, duration: 0.5 }}
-                  className="px-4 py-2 text-xs font-mono text-white/60 border border-white/8 rounded-sm hover:border-gold-400/40 hover:text-gold-300 transition-all duration-300 cursor-default"
-                  style={{ background: 'rgba(255,255,255,0.02)' }}
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </div>
-
-            {/* Experience badge */}
+          {/* Experience badge */}
+          <div className="flex items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="mt-10 p-6 rounded-sm border border-gold-400/20 bg-gold-400/4"
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="w-full p-8 rounded-sm border border-gold-400/20 bg-gold-400/4"
             >
               <div className="text-gold-400 text-xs tracking-widest uppercase mb-2 font-medium">Total Experience</div>
-              <div className="text-5xl font-black text-gold-gradient mb-1">3+ Years</div>
+              <div className="text-6xl font-black text-gold-gradient mb-1">3+ Years</div>
               <div className="text-white/40 text-sm">of professional Roblox scripting</div>
-              <div className="gold-line mt-4" />
-              <div className="flex gap-6 mt-4">
+              <div className="gold-line mt-6" />
+              <div className="flex gap-8 mt-6">
                 <div>
-                  <div className="text-white font-bold">ET</div>
-                  <div className="text-white/30 text-xs">Timezone</div>
+                  <div className="text-white font-bold text-lg">ET</div>
+                  <div className="text-white/30 text-xs mt-0.5">Timezone</div>
                 </div>
                 <div>
-                  <div className="text-white font-bold">FR / EN</div>
-                  <div className="text-white/30 text-xs">Languages</div>
+                  <div className="text-white font-bold text-lg">FR / EN</div>
+                  <div className="text-white/30 text-xs mt-0.5">Languages</div>
                 </div>
                 <div>
-                  <div className="text-white font-bold">24–48h</div>
-                  <div className="text-white/30 text-xs">Response Time</div>
+                  <div className="text-white font-bold text-lg">24-48h</div>
+                  <div className="text-white/30 text-xs mt-0.5">Response Time</div>
                 </div>
               </div>
             </motion.div>

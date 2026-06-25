@@ -8,7 +8,7 @@ const reasons = [
   {
     icon: ShieldCheck,
     title: 'Reliability You Can Count On',
-    desc: 'Deadlines are sacred. I deliver clean, working code on time, every time — no excuses, no surprises.',
+    desc: 'Deadlines are sacred. I deliver clean, working code on time, every time , no excuses, no surprises.',
   },
   {
     icon: MessageCircle,
@@ -23,7 +23,7 @@ const reasons = [
   {
     icon: Star,
     title: 'Uncompromising Quality',
-    desc: 'Every system is built to production standards — clean, commented, maintainable, and scalable.',
+    desc: 'Every system is built to production standards , clean, commented, maintainable, and scalable.',
   },
   {
     icon: Clock,

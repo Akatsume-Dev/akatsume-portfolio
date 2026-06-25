@@ -85,9 +85,9 @@ export default function Contact() {
             className="lg:col-span-2 space-y-6"
           >
             {[
-              { icon: MessageCircle, title: 'Discord', desc: 'Fastest response — add me and let\'s chat', value: 'akatsume' },
+              { icon: MessageCircle, title: 'Discord', desc: 'Fastest response, add me and lets chat', value: '_akatsume' },
               { icon: Clock, title: 'Response Time', desc: 'I reply within 24 hours, often much faster', value: '< 24 hours' },
-              { icon: Globe, title: 'Timezone', desc: 'Eastern Time (ET) — available most hours', value: 'ET / UTC-5' },
+              { icon: Globe, title: 'Timezone', desc: 'Eastern Time (ET) , available most hours', value: 'ET / UTC-5' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4 p-5 rounded-sm border border-white/6 hover:border-gold-400/20 transition-all duration-300 group">
                 <div className="w-10 h-10 rounded-sm border border-gold-400/15 bg-gold-400/5 flex items-center justify-center flex-shrink-0 group-hover:border-gold-400/40 transition-all duration-300">
@@ -174,7 +174,7 @@ export default function Contact() {
                     rows={5}
                     value={form.message}
                     onChange={set('message')}
-                    placeholder="Describe your project — what needs to be built, your timeline, and any relevant details..."
+                    placeholder="Describe your project , what needs to be built, your timeline, and any relevant details..."
                     className="input-premium w-full px-4 py-3.5 rounded-sm text-sm resize-none"
                   />
                 </div>
