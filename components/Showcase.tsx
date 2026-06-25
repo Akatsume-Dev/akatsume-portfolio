@@ -7,7 +7,18 @@ import { ExternalLink, Code2, Layers, Cpu } from 'lucide-react'
 
 const filters = ['All', 'Gameplay', 'UI Systems', 'Economy', 'Multiplayer']
 
-const projects = [
+type Project = {
+  id: number
+  title: string
+  category: string
+  desc: string
+  tags: string[]
+  size: string
+  gradient: string
+  video?: string  // path to video in /public/videos/ e.g. '/videos/combat.mp4'
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: 'Combat Engine',
@@ -16,6 +27,7 @@ const projects = [
     tags: ['Lua', 'RemoteEvents', 'Hitbox', 'Animation'],
     size: 'large',
     gradient: 'from-purple-900/40 to-dark-700',
+    // video: '/videos/combat.mp4',
   },
   {
     id: 2,
@@ -25,6 +37,7 @@ const projects = [
     tags: ['TweenService', 'GUI', 'DataStore'],
     size: 'small',
     gradient: 'from-blue-900/40 to-dark-700',
+    // video: '/videos/shop-ui.mp4',
   },
   {
     id: 3,
@@ -34,15 +47,17 @@ const projects = [
     tags: ['DataStore', 'Security', 'Balancing'],
     size: 'small',
     gradient: 'from-gold-900/30 to-dark-700',
+    // video: '/videos/economy.mp4',
   },
   {
     id: 4,
     title: 'Team Deathmatch',
     category: 'Multiplayer',
-    desc: 'Full TDM implementation: team balancing, spawn management, kill feed, scoreboard, round system , production-ready.',
+    desc: 'Full TDM implementation: team balancing, spawn management, kill feed, scoreboard, round system, production-ready.',
     tags: ['Multiplayer', 'Teams', 'Round System'],
     size: 'large',
     gradient: 'from-emerald-900/30 to-dark-700',
+    // video: '/videos/tdm.mp4',
   },
   {
     id: 5,
@@ -52,6 +67,7 @@ const projects = [
     tags: ['GUI', 'DataStore', 'Modules'],
     size: 'small',
     gradient: 'from-rose-900/30 to-dark-700',
+    // video: '/videos/inventory.mp4',
   },
   {
     id: 6,
@@ -61,6 +77,7 @@ const projects = [
     tags: ['DataStore', 'Progression', 'Modules'],
     size: 'small',
     gradient: 'from-indigo-900/30 to-dark-700',
+    // video: '/videos/progression.mp4',
   },
 ]
 
@@ -146,8 +163,20 @@ export default function Showcase() {
                 }`}
                 style={{ background: `linear-gradient(135deg, ${project.gradient.replace('from-', '').replace(' to-dark-700', '')}, #0A0A0A)` }}
               >
+                {/* Video background (shown when video path is set) */}
+                {project.video && (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src={project.video}
+                  />
+                )}
+
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-400" />
+                <div className={`absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/60 to-transparent transition-opacity duration-400 ${project.video ? 'opacity-80 group-hover:opacity-90' : 'opacity-70 group-hover:opacity-90'}`} />
 
                 {/* Hover gold glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -171,7 +200,13 @@ export default function Showcase() {
                 </div>
 
                 {/* Category badge */}
-                <div className="absolute top-5 right-5">
+                <div className="absolute top-5 right-5 flex items-center gap-2">
+                  {project.video && (
+                    <span className="text-[10px] px-2 py-1 rounded-full border border-white/20 text-white/60 font-medium bg-dark-900/80 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse inline-block" />
+                      DEMO
+                    </span>
+                  )}
                   <span className="text-[10px] px-3 py-1 rounded-full border border-gold-400/20 text-gold-400/70 font-medium tracking-wide bg-dark-900/60">
                     {project.category}
                   </span>
