@@ -69,8 +69,8 @@ export default function Skills() {
             transition={{ delay: 0.1 }}
             className="text-[clamp(2rem,5vw,3.5rem)] font-black leading-tight"
           >
-            Mastery, Not{' '}
-            <span className="text-gold-gradient">Mediocrity</span>
+            Skills I Use{' '}
+            <span className="text-gold-gradient">Every Day</span>
           </motion.h2>
         </div>
 

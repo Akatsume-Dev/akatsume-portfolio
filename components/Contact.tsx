@@ -20,12 +20,25 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  const [error, setError] = useState('')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    await new Promise(r => setTimeout(r, 1200))
-    setLoading(false)
-    setSubmitted(true)
+    setError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('Failed')
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. DM me on Discord instead: _akatsume')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
@@ -197,6 +210,9 @@ export default function Contact() {
                   )}
                 </button>
 
+                {error && (
+                  <p className="text-center text-red-400/80 text-xs">{error}</p>
+                )}
                 <p className="text-center text-white/25 text-xs">
                   No spam. No commitment. Just a conversation.
                 </p>

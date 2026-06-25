@@ -76,8 +76,8 @@ export default function WhyChooseMe() {
             transition={{ delay: 0.1 }}
             className="text-[clamp(2rem,5vw,3.5rem)] font-black leading-tight"
           >
-            The Standard{' '}
-            <span className="text-gold-gradient">Others Chase.</span>
+            Why Clients{' '}
+            <span className="text-gold-gradient">Keep Coming Back</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}

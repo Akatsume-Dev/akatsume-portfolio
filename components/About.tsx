@@ -6,12 +6,15 @@ import { useInView } from 'react-intersection-observer'
 import { Code2, Zap, Globe } from 'lucide-react'
 
 function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(end)
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 })
+  const started = useRef(false)
 
   useEffect(() => {
-    if (!inView) return
-    const duration = 1800
+    if (!inView || started.current) return
+    started.current = true
+    setCount(0)
+    const duration = 1600
     const start = Date.now()
     const tick = () => {
       const elapsed = Date.now() - start
@@ -24,7 +27,7 @@ function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
     requestAnimationFrame(tick)
   }, [inView, end])
 
-  return <span ref={ref}>{count}{suffix}</span>
+  return <span ref={ref} style={{ display: 'inline-block', minWidth: '2ch' }}>{count}{suffix}</span>
 }
 
 const stats = [
@@ -67,14 +70,14 @@ export default function About() {
             </motion.div>
 
             <motion.h2 variants={itemVariants} className="text-[clamp(2rem,5vw,3.5rem)] font-black leading-tight mb-8">
-              Not Just a{' '}
-              <span className="text-gold-gradient">Scripter.</span>
-              <br />A Craftsman.
+              3 Years Building{' '}
+              <span className="text-gold-gradient">Roblox Systems</span>
+              <br />That Actually Work.
             </motion.h2>
 
             <motion.div variants={itemVariants} className="space-y-5 text-white/60 leading-relaxed text-lg">
               <p>
-                I'm <strong className="text-white font-semibold">Akatsume</strong> , a dedicated Roblox scripter with over 3 years of hands-on experience engineering the systems that make games exceptional. I don't write code for the sake of writing code; I build systems that <em className="text-gold-300 not-italic">players love</em> and <em className="text-gold-300 not-italic">clients trust</em>.
+                I'm <strong className="text-white font-semibold">Akatsume</strong>, a dedicated Roblox scripter with over 3 years of hands-on experience engineering the systems that make games exceptional. I don't write code for the sake of writing code; I build systems that <em className="text-gold-300 not-italic">players love</em> and <em className="text-gold-300 not-italic">clients trust</em>.
               </p>
               <p>
                 From fluid gameplay loops and robust data persistence to polished UI frameworks and competitive multiplayer systems , I've shipped it all. My approach blends clean architecture with a deep understanding of what makes Roblox games feel premium.
@@ -122,7 +125,7 @@ export default function About() {
               <p className="text-white/50 italic text-base leading-relaxed">
                 "Every line of code I write is a commitment to quality. Your game deserves nothing less than the best."
               </p>
-              <footer className="text-gold-400/60 text-xs mt-3 tracking-widest uppercase">, Akatsume</footer>
+              <footer className="text-gold-400/60 text-xs mt-3 tracking-widest uppercase">Akatsume</footer>
             </motion.blockquote>
           </div>
         </motion.div>
