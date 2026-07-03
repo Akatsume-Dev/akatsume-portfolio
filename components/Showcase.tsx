@@ -119,6 +119,16 @@ const projects: Project[] = [
     gradient: 'from-rose-900/30 to-dark-700',
     video: '/videos/Steal A Card System.mp4',
   },
+  {
+    id: 11,
+    title: 'NPC Interaction',
+    category: 'Gameplay',
+    desc: 'Full NPC interaction system with dialogue, proximity detection, and branching responses.',
+    tags: ['NPC', 'Dialogue', 'Proximity', 'Lua'],
+    size: 'large',
+    gradient: 'from-cyan-900/30 to-dark-700',
+    video: '/videos/NPC Interaction.mp4',
+  },
 ]
 
 export default function Showcase() {
