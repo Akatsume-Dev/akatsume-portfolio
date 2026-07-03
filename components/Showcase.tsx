@@ -159,6 +159,16 @@ const projects: Project[] = [
     gradient: 'from-cyan-900/30 to-dark-700',
     video: '/videos/NPC Interaction.mp4',
   },
+  {
+    id: 12,
+    title: 'Admin Panel System',
+    category: 'UI Systems',
+    desc: 'Full in-game admin panel with player management, moderation tools, and live server controls.',
+    tags: ['Admin', 'GUI', 'Moderation', 'Lua'],
+    size: 'large',
+    gradient: 'from-slate-900/40 to-dark-700',
+    video: '/videos/Admin System.mp4',
+  },
 ]
 
 export default function Showcase() {
