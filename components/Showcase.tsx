@@ -1,9 +1,39 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ExternalLink, Code2, Layers, Cpu } from 'lucide-react'
+
+function LazyVideo({ src }: { src: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  const { ref: inViewRef, inView } = useInView({ threshold: 0.2, triggerOnce: false })
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (inView) {
+      el.play().catch(() => {})
+    } else {
+      el.pause()
+    }
+  }, [inView])
+
+  return (
+    <video
+      ref={(el) => {
+        (ref as any).current = el
+        inViewRef(el)
+      }}
+      muted
+      loop
+      playsInline
+      preload="none"
+      className="absolute inset-0 w-full h-full object-cover"
+      src={src}
+    />
+  )
+}
 
 const filters = ['All', 'Gameplay', 'UI Systems', 'Multiplayer', 'Economy']
 
@@ -214,16 +244,7 @@ export default function Showcase() {
                 style={{ background: `linear-gradient(135deg, ${project.gradient.replace('from-', '').replace(' to-dark-700', '')}, #0A0A0A)` }}
               >
                 {/* Video background (shown when video path is set) */}
-                {project.video && (
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                    src={project.video}
-                  />
-                )}
+                {project.video && <LazyVideo src={project.video} />}
 
                 {/* Hover overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/60 to-transparent transition-opacity duration-400 ${project.video ? 'opacity-80 group-hover:opacity-90' : 'opacity-70 group-hover:opacity-90'}`} />
