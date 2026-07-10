@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Send, MessageCircle, Clock, Globe, CheckCircle } from 'lucide-react'
+import AvailabilityCalendar from './AvailabilityCalendar'
 
 const projectTypes = [
   'Gameplay System',
@@ -113,6 +114,9 @@ export default function Contact() {
                 </div>
               </div>
             ))}
+
+            {/* Availability calendar */}
+            <AvailabilityCalendar />
 
             {/* Trust note */}
             <div className="p-5 rounded-sm border border-gold-400/15 bg-gold-400/4">
