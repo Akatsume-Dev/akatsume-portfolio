@@ -3,26 +3,19 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-type Availability = {
-  status: 'available' | 'busy' | 'limited'
-  note: string
-  days: Record<string, boolean>
-}
+type DayStatus = 'available' | 'limited' | 'busy' | 'off'
+type Availability = { note: string; days: Record<string, DayStatus> }
 
 const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 const DAY_LABELS: Record<string, string> = {
   mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu', fri: 'Fri', sat: 'Sat', sun: 'Sun',
 }
 
-const STATUS_COLOR: Record<string, string> = {
+const STATUS_COLOR: Record<DayStatus, string> = {
   available: '#4ade80',
-  limited: '#facc15',
-  busy: '#f87171',
-}
-const STATUS_LABEL: Record<string, string> = {
-  available: 'Available',
-  limited: 'Limited',
-  busy: 'Busy',
+  limited:   '#facc15',
+  busy:      '#f87171',
+  off:       'transparent',
 }
 
 const TODAY = new Date().toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase().slice(0, 3)
@@ -36,7 +29,15 @@ export default function AvailabilityCalendar() {
 
   if (!data) return null
 
-  const color = STATUS_COLOR[data.status]
+  // derive overall status from days for the status dot
+  const dayStatuses = Object.values(data.days)
+  const overallStatus: DayStatus =
+    dayStatuses.some(s => s === 'available') ? 'available' :
+    dayStatuses.some(s => s === 'limited') ? 'limited' :
+    dayStatuses.some(s => s === 'busy') ? 'busy' : 'off'
+
+  const dotColor = STATUS_COLOR[overallStatus]
+  const statusLabel = overallStatus === 'available' ? 'Available' : overallStatus === 'limited' ? 'Limited' : overallStatus === 'busy' ? 'Busy' : 'Unavailable'
 
   return (
     <motion.div
@@ -48,8 +49,10 @@ export default function AvailabilityCalendar() {
       {/* Status row */}
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full animate-pulse" style={{ backgroundColor: color }} />
-          <span className="text-white font-semibold text-sm">{STATUS_LABEL[data.status]}</span>
+          {overallStatus !== 'off' && (
+            <span className="w-2.5 h-2.5 rounded-full animate-pulse" style={{ backgroundColor: dotColor }} />
+          )}
+          <span className="text-white font-semibold text-sm">{statusLabel}</span>
         </div>
         <span className="text-white/35 text-xs">{data.note}</span>
       </div>
@@ -57,28 +60,24 @@ export default function AvailabilityCalendar() {
       {/* Week grid */}
       <div className="grid grid-cols-7 gap-1.5">
         {DAYS.map(day => {
+          const status: DayStatus = data.days[day] ?? 'off'
           const isToday = day === TODAY
-          const isOn = data.days[day]
+          const color = STATUS_COLOR[status]
+          const isOff = status === 'off'
+
           return (
             <div key={day} className="flex flex-col items-center gap-1.5">
               <span className={`text-[10px] font-medium tracking-widest uppercase ${isToday ? 'text-gold-400' : 'text-white/25'}`}>
                 {DAY_LABELS[day]}
               </span>
               <div
-                className={`w-full h-7 rounded-sm transition-all ${
-                  isOn
-                    ? isToday
-                      ? 'border border-gold-400/60'
-                      : 'border border-white/8'
-                    : 'border border-white/4'
+                className={`w-full h-7 rounded-sm transition-all border ${
+                  isToday ? 'border-gold-400/60' : isOff ? 'border-white/4' : 'border-white/10'
                 }`}
-                style={isOn ? { backgroundColor: color + '22' } : {}}
+                style={!isOff ? { backgroundColor: color + '28' } : {}}
               >
-                {isOn && (
-                  <div
-                    className="h-full w-full rounded-sm opacity-60"
-                    style={{ backgroundColor: color + '18' }}
-                  />
+                {!isOff && (
+                  <div className="h-full w-full rounded-sm" style={{ backgroundColor: color + '18' }} />
                 )}
               </div>
             </div>
@@ -86,9 +85,14 @@ export default function AvailabilityCalendar() {
         })}
       </div>
 
-      <p className="text-white/20 text-[10px] mt-4 tracking-wide">
-        Green days = available. Today is highlighted in gold.
-      </p>
+      <div className="flex gap-3 mt-4 flex-wrap">
+        {(['available', 'limited', 'busy'] as DayStatus[]).map(s => (
+          <div key={s} className="flex items-center gap-1 text-[10px] text-white/30">
+            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: STATUS_COLOR[s] }} />
+            {s.charAt(0).toUpperCase() + s.slice(1)}
+          </div>
+        ))}
+      </div>
     </motion.div>
   )
 }

@@ -1,16 +1,15 @@
 import { NextResponse } from 'next/server'
 
-// Fallback default when KV is not set up
-const DEFAULT: Availability = {
-  status: 'available',
-  note: 'Open to new projects',
-  days: { mon: true, tue: true, wed: true, thu: true, fri: true, sat: false, sun: false },
-}
+export type DayStatus = 'available' | 'limited' | 'busy' | 'off'
 
 export type Availability = {
-  status: 'available' | 'busy' | 'limited'
   note: string
-  days: Record<string, boolean>
+  days: Record<string, DayStatus>
+}
+
+const DEFAULT: Availability = {
+  note: 'Open to new projects',
+  days: { mon: 'available', tue: 'available', wed: 'available', thu: 'available', fri: 'available', sat: 'off', sun: 'off' },
 }
 
 async function getKV() {
