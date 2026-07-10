@@ -5,7 +5,6 @@ import WhyChooseMe from '@/components/WhyChooseMe'
 import Pricing from '@/components/Pricing'
 import Showcase from '@/components/Showcase'
 import Testimonials from '@/components/Testimonials'
-import Skills from '@/components/Skills'
 import Process from '@/components/Process'
 import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
@@ -24,7 +23,6 @@ export default function Home() {
         <Pricing />
         <Showcase />
         <Testimonials />
-        <Skills />
         <Process />
         <FAQ />
         <Contact />

@@ -1,34 +1,21 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import VanillaTilt from 'vanilla-tilt'
+import { motion } from 'framer-motion'
+import { CSSProperties } from 'react'
 
-export default function TiltCard({ children, className, disabled }: {
+export default function TiltCard({ children, className, style }: {
   children: React.ReactNode
   className?: string
-  disabled?: boolean
+  style?: CSSProperties
 }) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!ref.current || disabled) return
-    VanillaTilt.init(ref.current, {
-      max: 6,
-      speed: 600,
-      glare: true,
-      'max-glare': 0.08,
-      scale: 1.02,
-    })
-    return () => {
-      if (ref.current && (ref.current as any).vanillaTilt) {
-        ;(ref.current as any).vanillaTilt.destroy()
-      }
-    }
-  }, [disabled])
-
   return (
-    <div ref={ref} className={className}>
+    <motion.div
+      className={className}
+      style={style}
+      whileHover={{ rotateX: 4, rotateY: -4, scale: 1.02 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+    >
       {children}
-    </div>
+    </motion.div>
   )
 }
