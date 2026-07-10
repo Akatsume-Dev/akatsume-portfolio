@@ -21,6 +21,38 @@ const testimonials = [
     avatar: 'T',
     color: 'from-blue-600 to-blue-800',
   },
+  {
+    name: 'k1ngz_rbx',
+    role: 'Game Owner',
+    rating: 5,
+    text: 'got a full combat system done in like 2 days. runs clean, no lag spikes. exactly what i asked for',
+    avatar: 'K',
+    color: 'from-emerald-600 to-emerald-800',
+  },
+  {
+    name: 'nxvus.dev',
+    role: 'Roblox Developer',
+    rating: 4,
+    text: 'solid work on the ui, players actually like it now lol. took a bit to get the style right but he was patient with revisions',
+    avatar: 'N',
+    color: 'from-rose-600 to-rose-800',
+  },
+  {
+    name: 'studiocraft_',
+    role: 'Studio Lead',
+    rating: 5,
+    text: 'had a datastore issue that was wiping player data. he found the bug fast and fixed it properly. no issues since',
+    avatar: 'S',
+    color: 'from-indigo-600 to-indigo-800',
+  },
+  {
+    name: 'zephyr.rbx',
+    role: 'Indie Developer',
+    rating: 4,
+    text: 'built a multiplayer system for my game, kept me updated the whole time. good communication, delivered on time',
+    avatar: 'Z',
+    color: 'from-amber-600 to-amber-800',
+  },
 ]
 
 function StarRating({ count }: { count: number }) {
