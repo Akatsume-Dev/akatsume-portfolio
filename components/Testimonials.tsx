@@ -22,11 +22,11 @@ const testimonials = [
     color: 'from-blue-600 to-blue-800',
   },
   {
-    name: 'k1ngz_rbx',
-    role: 'Game Owner',
+    name: '@vo1edd',
+    role: 'Developer / Game Owner',
     rating: 5,
-    text: 'got a full combat system done in like 2 days. runs clean, no lag spikes. exactly what i asked for',
-    avatar: 'K',
+    text: 'Swift and professional. Overall nice guy and knows how to get the job done. Finds a passion in your project and really takes his time to deliver. Highly recommend :)',
+    avatar: 'V',
     color: 'from-emerald-600 to-emerald-800',
   },
   {
