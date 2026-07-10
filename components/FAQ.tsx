@@ -7,31 +7,31 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     q: 'How much do your services cost?',
-    a: 'Pricing depends on the complexity and scope of your project. Simple scripts start from $25, advanced systems from $75, and full game development from $150+. Contact me for a free, no-obligation quote tailored to your exact needs.',
+    a: 'Depends on what you need. Simple scripts start from $25, larger systems from $75, full game dev from $150+. Send me a message and I will give you a straight price.',
   },
   {
     q: 'How long does a project take?',
-    a: 'Timelines vary based on complexity. A single script can be ready in 24–48 hours. A full game system typically takes 3–7 days. I always give you a realistic estimate upfront , and I stick to it.',
+    a: 'A single script can be done in 24-48 hours. A full system usually takes 3-7 days. I give you a realistic time frame before starting and I stick to it.',
   },
   {
     q: 'Do you offer revisions?',
-    a: 'Absolutely. Starter packages include up to 2 revisions, Advanced includes up to 5, and Premium includes unlimited revisions until you\'re fully satisfied. My goal is your complete satisfaction.',
+    a: 'Yes. Starter gets 2 revisions, Advanced gets 5, Premium is unlimited. If something is not right, I fix it.',
   },
   {
     q: 'How do we communicate during the project?',
-    a: 'I\'m available on Discord for real-time updates and questions. I provide daily progress updates on active projects and typically respond within a few hours. Zero ghosting , ever.',
+    a: 'Discord. I give updates without you having to ask and reply fast. No ghosting.',
   },
   {
     q: 'How do payments work?',
-    a: 'I accept payments via PayPal or other agreed-upon methods. For larger projects, I typically work with a 50% upfront payment and 50% on delivery. For smaller projects, full payment upfront is standard.',
+    a: 'PayPal or other methods we agree on. Bigger projects are 50% upfront and 50% on delivery. Smaller ones are usually full payment upfront.',
   },
   {
-    q: 'Can you work with an existing game\'s codebase?',
-    a: 'Yes. I can work with existing games, clean up legacy code, add new systems on top of what\'s already there, or fix persistent bugs. I take time to understand your existing architecture before making changes.',
+    q: 'Can you work with an existing codebase?',
+    a: 'Yes. I can add to what is already there, clean things up, or fix bugs. I look at the existing code first before touching anything.',
   },
   {
     q: 'Do I get the source code?',
-    a: 'Yes , on all packages, you receive full ownership of the source code upon final payment. I don\'t retain backdoors or obfuscate scripts.',
+    a: 'Yes, on every package. Full ownership once paid. No obfuscation, no backdoors.',
   },
 ]
 

@@ -314,7 +314,7 @@ export default function Showcase() {
           viewport={{ once: true }}
           className="text-center mt-14"
         >
-          <p className="text-white/30 text-sm mb-2">These are samples — every project I build is custom to your game.</p>
+          <p className="text-white/30 text-sm mb-2">These are samples. Every project I build is custom to your game.</p>
           <p className="text-white/20 text-xs mb-5">Note: I only wrote the scripts shown. The maps, buildings, VFX, animations, and models are not my work.</p>
           <a href="#contact" className="btn-gold">
             Start Your Project

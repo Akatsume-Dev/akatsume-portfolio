@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: 'Portfolio Reviews <onboarding@resend.dev>',
       to: 'charlodessenneville@gmail.com',
-      subject: `New review from ${name} — ${rating}/5 stars`,
+      subject: `New review from ${name} - ${rating}/5 stars`,
       html: `
         <div style="font-family: sans-serif; max-width: 560px; margin: 0 auto; background: #0a0a0a; color: #fff; padding: 32px; border-radius: 8px;">
           <h2 style="color: #C9A84C; margin: 0 0 20px;">New Review Submission</h2>

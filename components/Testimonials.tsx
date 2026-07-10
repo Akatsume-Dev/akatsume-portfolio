@@ -166,7 +166,7 @@ function ReviewForm() {
             required
             value={form.name}
             onChange={set('name')}
-            placeholder="vortexdev."
+            placeholder="_akatsume"
             className="input-premium w-full px-4 py-3.5 rounded-sm text-sm"
           />
         </div>
@@ -176,7 +176,7 @@ function ReviewForm() {
             required
             value={form.role}
             onChange={set('role')}
-            placeholder="Game Owner, Developer..."
+            placeholder="Developer"
             className="input-premium w-full px-4 py-3.5 rounded-sm text-sm"
           />
         </div>
