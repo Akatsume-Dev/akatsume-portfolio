@@ -77,13 +77,13 @@ export default function About() {
 
             <motion.div variants={itemVariants} className="space-y-5 text-white/60 leading-relaxed text-lg">
               <p>
-                I'm <strong className="text-white font-semibold">Akatsume</strong>, a dedicated Roblox scripter with over 3 years of hands-on experience engineering the systems that make games exceptional. I don't write code for the sake of writing code; I build systems that <em className="text-gold-300 not-italic">players love</em> and <em className="text-gold-300 not-italic">clients trust</em>.
+                I'm <strong className="text-white font-semibold">Akatsume</strong>, a Roblox scripter with 3 years of experience building the systems behind games. I focus on writing code that holds up over time, not just code that works once.
               </p>
               <p>
-                From fluid gameplay loops and robust data persistence to polished UI frameworks and competitive multiplayer systems , I've shipped it all. My approach blends clean architecture with a deep understanding of what makes Roblox games feel premium.
+                I have worked on gameplay, data, UI, multiplayer and more. I know what makes a Roblox game feel good to play and I build with that in mind.
               </p>
               <p>
-                Based in the <strong className="text-white/80">Eastern timezone (ET)</strong>, I communicate fluently in both <strong className="text-white/80">French and English</strong>, ensuring crystal-clear collaboration with clients worldwide.
+                Based in the <strong className="text-white/80">Eastern timezone (ET)</strong>, I speak both <strong className="text-white/80">French and English</strong> so communication is never an issue.
               </p>
             </motion.div>
 
@@ -123,7 +123,7 @@ export default function About() {
             >
               <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-400 to-transparent" />
               <p className="text-white/50 italic text-base leading-relaxed">
-                "Every line of code I write is a commitment to quality. Your game deserves nothing less than the best."
+                "I take the work seriously. If it is not right, I fix it."
               </p>
               <footer className="text-gold-400/60 text-xs mt-3 tracking-widest uppercase">Akatsume</footer>
             </motion.blockquote>

@@ -144,7 +144,7 @@ export default function Pricing() {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
               )}
               {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <div className="flex justify-center pt-5 pb-1">
                   <span className="px-4 py-1 text-[10px] font-bold tracking-widest uppercase bg-gold-gradient text-dark-900 rounded-full whitespace-nowrap">
                     Most Popular
                   </span>

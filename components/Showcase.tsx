@@ -163,11 +163,21 @@ const projects: Project[] = [
     id: 12,
     title: 'Admin Panel System',
     category: 'UI Systems',
-    desc: 'Full in-game admin panel with player management, moderation tools, and live server controls.',
+    desc: 'In-game admin panel with player management, moderation tools, and live server controls.',
     tags: ['Admin', 'GUI', 'Moderation', 'Lua'],
     size: 'large',
     gradient: 'from-slate-900/40 to-dark-700',
     video: '/videos/Admin System.mp4',
+  },
+  {
+    id: 13,
+    title: 'Pull Skill',
+    category: 'Gameplay',
+    desc: 'Ability that pulls nearby players or objects toward a target point with physics and visual feedback.',
+    tags: ['Ability', 'Physics', 'VFX', 'Lua'],
+    size: 'small',
+    gradient: 'from-violet-900/40 to-dark-700',
+    video: '/videos/Pull Skill.mp4',
   },
 ]
 
@@ -304,7 +314,8 @@ export default function Showcase() {
           viewport={{ once: true }}
           className="text-center mt-14"
         >
-          <p className="text-white/30 text-sm mb-5">These are samples , every project I build is custom to your game.</p>
+          <p className="text-white/30 text-sm mb-2">These are samples — every project I build is custom to your game.</p>
+          <p className="text-white/20 text-xs mb-5">Note: I only wrote the scripts shown. The maps, buildings, VFX, animations, and models are not my work.</p>
           <a href="#contact" className="btn-gold">
             Start Your Project
           </a>

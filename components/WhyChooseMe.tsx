@@ -7,33 +7,33 @@ import { ShieldCheck, MessageCircle, Cpu, Star, Clock, HeartHandshake } from 'lu
 const reasons = [
   {
     icon: ShieldCheck,
-    title: 'Reliability You Can Count On',
-    desc: 'Deadlines are sacred. I deliver clean, working code on time, every time , no excuses, no surprises.',
+    title: 'I Deliver on Time',
+    desc: 'I set a deadline and I stick to it. If something comes up, I tell you early. No last-minute surprises.',
   },
   {
     icon: MessageCircle,
-    title: 'Crystal-Clear Communication',
-    desc: 'You\'ll always know the status of your project. Regular updates, fast responses, zero ghosting.',
+    title: 'I Keep You Updated',
+    desc: 'You will know where things are at without having to ask. Fast replies, no ghosting.',
   },
   {
     icon: Cpu,
-    title: 'Optimized Code Performance',
-    desc: 'Scripts engineered for minimal lag, maximum efficiency. Your players will feel the difference.',
+    title: 'Code That Actually Runs',
+    desc: 'Low lag, no memory leaks. I test before I send. Your players should not feel the backend.',
   },
   {
     icon: Star,
-    title: 'Uncompromising Quality',
-    desc: 'Every system is built to production standards , clean, commented, maintainable, and scalable.',
+    title: 'Clean Code',
+    desc: 'Readable, organized, easy to build on. Not just something that works once and breaks later.',
   },
   {
     icon: Clock,
-    title: 'Fast Turnaround',
-    desc: 'Speed without sacrificing quality. I work efficiently so you can ship sooner.',
+    title: 'Fast Without Cutting Corners',
+    desc: 'I work at a solid pace. Faster than most, but I do not rush things that should not be rushed.',
   },
   {
     icon: HeartHandshake,
-    title: 'Client-First Mindset',
-    desc: 'Your success is my success. I\'m not done until you\'re fully satisfied with the result.',
+    title: 'I Fix What Is Wrong',
+    desc: 'If something is off after delivery, I sort it out. I do not disappear once payment is done.',
   },
 ]
 
@@ -86,7 +86,7 @@ export default function WhyChooseMe() {
             transition={{ delay: 0.2 }}
             className="text-white/50 text-lg mt-4 max-w-xl mx-auto"
           >
-            Hundreds of Roblox scripters exist. Here's why smart clients choose me.
+            A lot of scripters are out there. Here is what makes working with me different.
           </motion.p>
         </div>
 

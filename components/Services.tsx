@@ -5,15 +5,15 @@ import { useInView } from 'react-intersection-observer'
 import { Code2, Gamepad2, LayoutDashboard, Database, Coins, Wrench, Users, Bug, Gauge } from 'lucide-react'
 
 const services = [
-  { icon: Code2, title: 'Roblox Scripting', desc: 'Custom Lua/Luau scripts tailored precisely to your vision , clean, efficient, production-ready.', tag: 'Core' },
-  { icon: Gamepad2, title: 'Gameplay Systems', desc: 'Combat mechanics, round systems, objectives, ability frameworks , engaging loops that keep players hooked.', tag: 'Popular' },
-  { icon: LayoutDashboard, title: 'UI Systems', desc: 'Polished, animated, responsive interfaces. Inventory, HUDs, menus, shops , crafted to feel premium.', tag: 'Popular' },
-  { icon: Database, title: 'Data Saving Systems', desc: 'Bulletproof DataStore solutions with session locking, backups, and auto-retry logic.', tag: 'Core' },
-  { icon: Coins, title: 'Economy Systems', desc: 'Currency, shops, trading, progression , balanced economies that drive engagement and monetization.', tag: 'Advanced' },
-  { icon: Wrench, title: 'Custom Mechanics', desc: 'Anything you can imagine , weapons, vehicles, pets, tools, building systems , brought to life.', tag: 'Custom' },
-  { icon: Users, title: 'Multiplayer Systems', desc: 'Team systems, matchmaking, lobbies, spectating , smooth experiences for every concurrent player.', tag: 'Advanced' },
-  { icon: Bug, title: 'Bug Fixing', desc: 'Persistent issues killing your game? I diagnose and eliminate bugs fast, no matter how deep they hide.', tag: 'Support' },
-  { icon: Gauge, title: 'Optimization', desc: 'Lag-free experiences. Script profiling, memory management, render optimization , silky-smooth FPS.', tag: 'Premium' },
+  { icon: Code2, title: 'Roblox Scripting', desc: 'Custom Lua/Luau scripts built for your game. Clean, organized, easy to build on top of.', tag: 'Core' },
+  { icon: Gamepad2, title: 'Gameplay Systems', desc: 'Combat, round systems, objectives, ability frameworks. Systems that feel good to play.', tag: 'Popular' },
+  { icon: LayoutDashboard, title: 'UI Systems', desc: 'Clean, animated interfaces. Inventory, HUDs, menus, shops. Works on all screen sizes.', tag: 'Popular' },
+  { icon: Database, title: 'Data Saving Systems', desc: 'Solid DataStore setup with session locking, backups, and retry logic. Player data that does not get lost.', tag: 'Core' },
+  { icon: Coins, title: 'Economy Systems', desc: 'Currency, shops, trading, progression. Balanced so players keep coming back without feeling cheated.', tag: 'Advanced' },
+  { icon: Wrench, title: 'Custom Mechanics', desc: 'Weapons, vehicles, pets, tools, building systems. If you can describe it, I can script it.', tag: 'Custom' },
+  { icon: Users, title: 'Multiplayer Systems', desc: 'Teams, matchmaking, lobbies, spectating. Handles multiple players without falling apart.', tag: 'Advanced' },
+  { icon: Bug, title: 'Bug Fixing', desc: 'Something broken and you cannot find where? I track it down and fix it, no matter how buried it is.', tag: 'Support' },
+  { icon: Gauge, title: 'Optimization', desc: 'High lag, low FPS? I go through the scripts, find what is heavy, and clean it up.', tag: 'Premium' },
 ]
 
 const tagColors: Record<string, string> = {

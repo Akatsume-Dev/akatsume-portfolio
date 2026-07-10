@@ -231,7 +231,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 1 }}
               className="text-[clamp(0.9rem,1.5vw,1.1rem)] text-white/50 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-4 font-light"
             >
-              3 years crafting premium game systems, immersive UI, and elite mechanics for Roblox experiences players never forget.
+              3 years building game systems, UIs, and custom mechanics for Roblox. Clean code, on time, no headaches.
             </motion.p>
           )}
 
