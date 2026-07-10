@@ -25,6 +25,7 @@ export default function AdminPage() {
   const [data, setData] = useState<Availability | null>(null)
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
+  const [saveError, setSaveError] = useState('')
 
   const login = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,42 +35,26 @@ export default function AdminPage() {
       setData(d)
       setAuthed(true)
     } else {
-      // Still load for reading — check by trying to save
-      const res2 = await fetch('/api/availability')
-      if (res2.ok) {
-        // validate password by attempting a no-op POST
-        const testRes = await fetch('/api/availability', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
-          body: JSON.stringify(await res2.json()),
-        })
-        if (testRes.ok) {
-          setData(await res2.json())
-          setAuthed(true)
-        } else {
-          setAuthError('Wrong password.')
-        }
-      }
+      setAuthError('Wrong password.')
     }
   }
-
-  useEffect(() => {
-    if (authed) {
-      fetch('/api/availability').then(r => r.json()).then(setData)
-    }
-  }, [authed])
 
   const save = async () => {
     if (!data) return
     setSaving(true)
-    await fetch('/api/availability', {
+    setSaveError('')
+    const res = await fetch('/api/availability', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
       body: JSON.stringify(data),
     })
     setSaving(false)
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+    if (res.ok) {
+      setSaved(true)
+      setTimeout(() => setSaved(false), 2000)
+    } else {
+      setSaveError('Failed to save. Check your password.')
+    }
   }
 
   if (!authed) {
@@ -160,6 +145,7 @@ export default function AdminPage() {
         >
           {saved ? 'Saved!' : saving ? 'Saving...' : 'Save Changes'}
         </button>
+        {saveError && <p className="text-red-400 text-xs text-center">{saveError}</p>}
       </div>
     </div>
   )

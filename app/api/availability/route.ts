@@ -22,7 +22,11 @@ async function getKV() {
   }
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  const password = req.headers.get('x-admin-password')
+  if (password !== null && password !== process.env.ADMIN_PASSWORD) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
   try {
     const kv = await getKV()
     if (!kv) return NextResponse.json(DEFAULT)
