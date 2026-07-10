@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Check, Zap, Crown, Star } from 'lucide-react'
+import TiltCard from './TiltCard'
 
 const plans = [
   {
@@ -128,7 +129,9 @@ export default function Pricing() {
                 hidden: { opacity: 0, y: 50, scale: 0.95 },
                 visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } },
               }}
-              className={`relative rounded-sm flex flex-col overflow-hidden ${
+            >
+            <TiltCard
+              className={`relative rounded-sm flex flex-col overflow-hidden h-full ${
                 plan.highlight
                   ? 'border border-gold-400/40 shadow-gold-lg'
                   : 'border border-white/6'
@@ -137,7 +140,7 @@ export default function Pricing() {
                 background: plan.highlight
                   ? 'linear-gradient(160deg, rgba(201,168,76,0.08) 0%, rgba(10,10,10,1) 50%)'
                   : 'rgba(10,10,10,0.9)',
-              }}
+              } as React.CSSProperties}
             >
               {/* Most popular badge */}
               {plan.highlight && (
@@ -202,6 +205,7 @@ export default function Pricing() {
                   {plan.cta}
                 </a>
               </div>
+            </TiltCard>
             </motion.div>
           ))}
         </motion.div>

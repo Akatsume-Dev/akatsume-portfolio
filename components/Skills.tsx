@@ -22,7 +22,7 @@ export default function Skills() {
             className="flex items-center justify-center gap-3 mb-6"
           >
             <div className="h-px w-12 bg-gold-400/60" />
-            <span className="text-gold-400 text-xs tracking-widest uppercase font-medium">Expertise</span>
+            <span className="text-gold-400 text-xs tracking-widest uppercase font-medium">About</span>
             <div className="h-px w-12 bg-gold-400/60" />
           </motion.div>
           <motion.h2
@@ -32,8 +32,8 @@ export default function Skills() {
             transition={{ delay: 0.1 }}
             className="text-[clamp(2rem,5vw,3.5rem)] font-black leading-tight"
           >
-            Skills I Use{' '}
-            <span className="text-gold-gradient">Every Day</span>
+            A Bit{' '}
+            <span className="text-gold-gradient">About Me</span>
           </motion.h2>
         </div>
 
