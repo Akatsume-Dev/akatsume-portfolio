@@ -3,8 +3,67 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Check, Zap, Crown, Star } from 'lucide-react'
+import { Check, Zap, Crown, Star, Box, Mountain, Castle } from 'lucide-react'
 import TiltCard from './TiltCard'
+
+const buildPlans = [
+  {
+    icon: Box,
+    name: 'Props & Assets',
+    tagline: 'Single models or small sets',
+    price: '$15',
+    priceNote: 'Starting from',
+    features: [
+      'Custom props, furniture, or decor',
+      'Modeled & textured in Blender',
+      'Optimized for Roblox (low tri count)',
+      'Ready-to-import FBX / OBJ',
+      'Up to 2 revisions',
+      'Delivery within 2–4 days',
+    ],
+    cta: 'Get Started',
+    highlight: false,
+  },
+  {
+    icon: Castle,
+    name: 'Scene / Small Map',
+    tagline: 'Lobbies, arenas, small areas',
+    price: '$100',
+    priceNote: 'Starting from',
+    features: [
+      'Everything in Props & Assets',
+      'Full scene or small map',
+      'Custom models made for your game',
+      'Lighting & atmosphere setup',
+      'Collision & performance pass',
+      'Up to 4 revisions',
+      'Delivery within 5–10 days',
+      'Post-delivery support (7 days)',
+    ],
+    cta: 'Hire Me Now',
+    highlight: true,
+  },
+  {
+    icon: Mountain,
+    name: 'Full Map',
+    tagline: 'Large, detailed environments',
+    price: '$300+',
+    priceNote: 'Starting from',
+    features: [
+      'Everything in Scene / Small Map',
+      'Large open map or world',
+      'Unique landmarks & set pieces',
+      'Custom skybox, fog & mood',
+      'Optimized for mobile & PC',
+      'Unlimited revisions',
+      'Priority delivery',
+      'Extended support (30 days)',
+      'Add scripting for a bundle discount',
+    ],
+    cta: 'Let\'s Talk',
+    highlight: false,
+  },
+]
 
 const plans = [
   {
@@ -56,7 +115,6 @@ const plans = [
       'Complete game systems',
       'Multiplayer architecture',
       'Custom mechanics & tools',
-      'Custom 3D models & builds (Blender)',
       'Performance optimization',
       'Unlimited revisions',
       'Priority delivery',
@@ -71,6 +129,8 @@ const plans = [
 
 export default function Pricing() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [tab, setTab] = useState<'scripting' | 'building'>('scripting')
+  const shown = tab === 'scripting' ? plans : buildPlans
 
   return (
     <section id="pricing" className="relative section-padding">
@@ -115,6 +175,23 @@ export default function Pricing() {
           </motion.p>
         </div>
 
+        {/* Tabs */}
+        <div className="flex justify-center gap-3 -mt-8 mb-8">
+          {(['scripting', 'building'] as const).map(t => (
+            <button
+              key={t}
+              onClick={() => setTab(t)}
+              className={`px-6 py-2 text-xs font-medium tracking-widest uppercase rounded-full border transition-all duration-300 ${
+                tab === t
+                  ? 'bg-gold-400 text-dark-900 border-gold-400 font-bold'
+                  : 'border-white/10 text-white/50 hover:border-gold-400/40 hover:text-white/80'
+              }`}
+            >
+              {t === 'scripting' ? 'Scripting' : 'Building (Blender)'}
+            </button>
+          ))}
+        </div>
+
         {/* Cards */}
         <motion.div
           ref={ref}
@@ -123,9 +200,9 @@ export default function Pricing() {
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
           className="grid md:grid-cols-3 gap-6 items-stretch pt-6"
         >
-          {plans.map((plan, i) => (
+          {shown.map((plan, i) => (
             <motion.div
-              key={plan.name}
+              key={tab + plan.name}
               variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.95 },
                 visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } },

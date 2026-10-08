@@ -25,7 +25,7 @@ export default function Footer() {
           <div>
             <div className="text-2xl font-black text-gold-gradient mb-3">AKATSUME</div>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Roblox scripter and Blender builder with 3 years of experience. Clean work, on time, no headaches.
+              Roblox scripter (3 years) and Blender builder (2 years). Clean work, on time, no headaches.
             </p>
             <div className="flex items-center gap-2 mt-4">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
