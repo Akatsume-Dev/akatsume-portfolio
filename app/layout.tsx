@@ -22,19 +22,19 @@ const jetbrains = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Akatsume , Elite Roblox Scripter',
-  description: 'Premium Roblox scripting services. 3 years of experience building elite game systems, UI, multiplayer mechanics, and more. Hire a professional Roblox developer today.',
-  keywords: ['Roblox scripter', 'Roblox developer', 'Roblox scripting', 'Lua programmer', 'hire Roblox dev', 'Roblox game development'],
+  title: 'Akatsume , Roblox Scripter & Builder',
+  description: 'Roblox scripting and Blender building. 3 years of experience building game systems, UI, multiplayer mechanics, plus custom 3D models and builds. Hire a professional Roblox developer today.',
+  keywords: ['Roblox scripter', 'Roblox developer', 'Roblox scripting', 'Lua programmer', 'hire Roblox dev', 'Roblox game development', 'Roblox builder', 'Blender 3D modeling', 'Roblox 3D models'],
   authors: [{ name: 'Akatsume' }],
   openGraph: {
-    title: 'Akatsume , Elite Roblox Scripter',
-    description: 'Premium Roblox scripting services. Turning ideas into elite Roblox experiences.',
+    title: 'Akatsume , Roblox Scripter & Builder',
+    description: 'Roblox scripting and Blender building. Turning ideas into elite Roblox experiences.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Akatsume , Elite Roblox Scripter',
-    description: 'Premium Roblox scripting services. 3 years of crafting elite game experiences.',
+    title: 'Akatsume , Roblox Scripter & Builder',
+    description: 'Roblox scripting and Blender building. 3 years of crafting elite game experiences.',
   },
   robots: {
     index: true,
