@@ -45,7 +45,7 @@ export default function WhyChooseMe() {
               transition={{ delay: 0.2 }}
               className="text-white/40 text-sm lg:text-right lg:pb-2 max-w-xs"
             >
-              A lot of scripters are out there. Here is what makes working with me different.
+              A lot of scripters and builders are out there. Here is what makes working with me different.
             </motion.p>
           </div>
         </div>

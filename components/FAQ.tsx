@@ -7,7 +7,7 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     q: 'How much do your services cost?',
-    a: 'Depends on what you need. Simple scripts start from $25, larger systems from $75, full game dev from $150+. Send me a message and I will give you a straight price.',
+    a: 'Depends on what you need. Simple scripts start from $25, larger systems from $75, full game dev from $150+. Blender models and builds are quoted per project. Send me a message and I will give you a straight price.',
   },
   {
     q: 'How long does a project take?',
@@ -28,6 +28,10 @@ const faqs = [
   {
     q: 'Can you work with an existing codebase?',
     a: 'Yes. I can add to what is already there, clean things up, or fix bugs. I look at the existing code first before touching anything.',
+  },
+  {
+    q: 'Do you do building and 3D models too?',
+    a: 'Yes. I model and build in Blender, from props and assets to full builds, ready to import into Roblox Studio. I can also script them so everything works together.',
   },
   {
     q: 'Do I get the source code?',

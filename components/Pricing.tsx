@@ -56,6 +56,7 @@ const plans = [
       'Complete game systems',
       'Multiplayer architecture',
       'Custom mechanics & tools',
+      'Custom 3D models & builds (Blender)',
       'Performance optimization',
       'Unlimited revisions',
       'Priority delivery',

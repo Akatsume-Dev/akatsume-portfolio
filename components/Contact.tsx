@@ -12,6 +12,7 @@ const projectTypes = [
   'Multiplayer System',
   'Bug Fix',
   'Optimization',
+  '3D Modeling / Build (Blender)',
   'Full Game Dev',
   'Other',
 ]

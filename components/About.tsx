@@ -77,10 +77,10 @@ export default function About() {
 
             <motion.div variants={itemVariants} className="space-y-5 text-white/60 leading-relaxed text-lg">
               <p>
-                I'm <strong className="text-white font-semibold">Akatsume</strong>, a Roblox scripter with 3 years of experience building the systems behind games. I focus on writing code that holds up over time, not just code that works once.
+                I'm <strong className="text-white font-semibold">Akatsume</strong>, a Roblox scripter and builder with 3 years of experience building the systems behind games. I focus on writing code that holds up over time, not just code that works once.
               </p>
               <p>
-                I have worked on gameplay, data, UI, multiplayer and more. I know what makes a Roblox game feel good to play and I build with that in mind.
+                I have worked on gameplay, data, UI, multiplayer and more. I also model and build in Blender, so I can handle both the systems and the 3D assets your game needs. I know what makes a Roblox game feel good to play and I build with that in mind.
               </p>
               <p>
                 Based in the <strong className="text-white/80">Eastern timezone (ET)</strong>, I speak both <strong className="text-white/80">French and English</strong> so communication is never an issue.
@@ -88,7 +88,7 @@ export default function About() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mt-8">
-              {['Lua / Luau', 'Roblox Studio', 'Game Design', 'Systems Architecture', 'ET Timezone'].map(tag => (
+              {['Lua / Luau', 'Roblox Studio', 'Blender', '3D Modeling', 'Game Design', 'Systems Architecture', 'ET Timezone'].map(tag => (
                 <span key={tag} className="px-4 py-1.5 text-xs text-gold-300 border border-gold-400/20 rounded-full tracking-wide font-medium bg-gold-400/5">
                   {tag}
                 </span>
