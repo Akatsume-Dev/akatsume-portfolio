@@ -23,7 +23,7 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'Akatsume , Roblox Scripter & Builder',
-  description: 'Roblox scripting and Blender building. 3 years of experience building game systems, UI, multiplayer mechanics, plus custom 3D models and builds. Hire a professional Roblox developer today.',
+  description: 'Roblox scripting and Blender building. 3 years building game systems, UI, and multiplayer mechanics, plus 2 years of Blender building: custom 3D models and maps. Hire a professional Roblox developer today.',
   keywords: ['Roblox scripter', 'Roblox developer', 'Roblox scripting', 'Lua programmer', 'hire Roblox dev', 'Roblox game development', 'Roblox builder', 'Blender 3D modeling', 'Roblox 3D models'],
   authors: [{ name: 'Akatsume' }],
   openGraph: {
