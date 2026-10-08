@@ -11,7 +11,7 @@ const buildPlans = [
     icon: Box,
     name: 'Props & Assets',
     tagline: 'Single models or small sets',
-    price: '$15',
+    price: '$30',
     priceNote: 'Starting from',
     features: [
       'Custom props, furniture, or decor',
