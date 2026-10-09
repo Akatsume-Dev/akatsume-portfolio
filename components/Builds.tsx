@@ -4,9 +4,16 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
-type Build = { title: string; desc: string; tags: string[]; image: string }
+type Build = { title: string; desc: string; tags: string[]; image: string; featured?: boolean }
 
 const builds: Build[] = [
+  {
+    title: "Dragon's Rest",
+    desc: 'Frozen canyon built around a giant dragon skeleton, with ice cliffs, rope bridges, torch-lit paths, and northern lights.',
+    tags: ['Map', 'Fantasy', 'Environment', 'Lighting'],
+    image: '/builds/dragons-rest.jpg',
+    featured: true,
+  },
   {
     title: 'Neon Arena',
     desc: 'Cyberpunk combat arena with neon lighting, tiered stands, cover props, and a glowing central platform.',
@@ -92,13 +99,15 @@ export default function Builds() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-              className="group relative text-left overflow-hidden rounded-sm border border-white/6 hover:border-gold-400/30 transition-colors duration-500 aspect-[16/9]"
+              className={`group relative text-left overflow-hidden rounded-sm border border-white/6 hover:border-gold-400/30 transition-colors duration-500 ${b.featured ? 'sm:col-span-2 aspect-[16/9] sm:aspect-[2/1]' : 'aspect-[16/9]'}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={b.image}
                 alt={b.title}
                 loading="lazy"
+                draggable={false}
+                onContextMenu={e => e.preventDefault()}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/10 to-transparent" />
@@ -153,7 +162,7 @@ export default function Builds() {
               className="max-w-6xl w-full"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={open.image} alt={open.title} className="w-full h-auto max-h-[80vh] object-contain rounded-sm" />
+              <img src={open.image} alt={open.title} draggable={false} onContextMenu={e => e.preventDefault()} onClick={e => e.stopPropagation()} className="w-full h-auto max-h-[80vh] object-contain rounded-sm" />
               <figcaption className="text-center mt-4">
                 <div className="text-white font-bold">{open.title}</div>
                 <div className="text-white/50 text-sm">{open.desc}</div>
