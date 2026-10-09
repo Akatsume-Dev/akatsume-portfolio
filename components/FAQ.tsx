@@ -7,7 +7,7 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     q: 'How much do your services cost?',
-    a: 'Depends on what you need. Simple scripts start from $25, larger systems from $75, full game dev from $150+. For builds, props start from $30, small maps from $100, and full maps from $300+. Send me a message and I will give you a straight price.',
+    a: 'Depends on what you need. Simple scripts start from $25, larger systems from $75, full game dev from $150+. For builds, props start from $30, scenes and small maps from $300, and full maps from $800+. Send me a message and I will give you a straight price.',
   },
   {
     q: 'How long does a project take?',

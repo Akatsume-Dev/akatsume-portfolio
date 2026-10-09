@@ -27,7 +27,7 @@ const buildPlans = [
     icon: Castle,
     name: 'Scene / Small Map',
     tagline: 'Lobbies, arenas, small areas',
-    price: '$100',
+    price: '$300',
     priceNote: 'Starting from',
     features: [
       'Everything in Props & Assets',
@@ -46,7 +46,7 @@ const buildPlans = [
     icon: Mountain,
     name: 'Full Map',
     tagline: 'Large, detailed environments',
-    price: '$300+',
+    price: '$800+',
     priceNote: 'Starting from',
     features: [
       'Everything in Scene / Small Map',
