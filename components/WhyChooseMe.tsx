@@ -4,12 +4,12 @@ import { motion } from 'framer-motion'
 import { ShieldCheck, MessageCircle, Cpu, Star, Clock, HeartHandshake } from 'lucide-react'
 
 const reasons = [
-  { icon: ShieldCheck, title: 'I Deliver on Time', desc: 'I set a deadline and I stick to it. If something comes up, I tell you early. No last-minute surprises.' },
-  { icon: MessageCircle, title: 'I Keep You Updated', desc: 'You will know where things are at without having to ask. Fast replies, no ghosting.' },
-  { icon: Cpu, title: 'Code That Actually Runs', desc: 'Low lag, no memory leaks. I test before I send. Your players should not feel the backend.' },
-  { icon: Star, title: 'Clean Code', desc: 'Readable, organized, easy to build on. Not just something that works once and breaks later.' },
-  { icon: Clock, title: 'Fast Without Cutting Corners', desc: 'I work at a solid pace. Faster than most, but I do not rush things that should not be rushed.' },
-  { icon: HeartHandshake, title: 'I Fix What Is Wrong', desc: 'If something is off after delivery, I sort it out. I do not disappear once payment is done.' },
+  { icon: ShieldCheck, title: 'I Deliver on Time', desc: 'Script or build, I set a deadline and I stick to it. If something comes up, I tell you early. No last-minute surprises.' },
+  { icon: MessageCircle, title: 'You See Progress', desc: 'Regular updates, test clips for systems and WIP renders for builds. You know where things are at without having to ask.' },
+  { icon: Cpu, title: 'Clean Code That Runs', desc: 'Low lag, no memory leaks, organized and easy to build on. I test before I send. Your players should not feel the backend.' },
+  { icon: Star, title: 'Builds Made for Roblox', desc: 'Low tri counts, clean UVs, proper collisions. My models import cleanly and run well on mobile, not just look good in a render.' },
+  { icon: Clock, title: 'Scripter and Builder in One', desc: 'I can build the map and script what happens in it. One person, one vision, no back-and-forth between two freelancers.' },
+  { icon: HeartHandshake, title: 'I Fix What Is Wrong', desc: 'If something is off after delivery, whether it is a bug or a mesh, I sort it out. I do not disappear once payment is done.' },
 ]
 
 export default function WhyChooseMe() {

@@ -30,22 +30,6 @@ const testimonials = [
     color: 'from-emerald-600 to-emerald-800',
   },
   {
-    name: 'nxvus.dev',
-    role: 'Roblox Developer',
-    rating: 4,
-    text: 'solid work on the ui, players actually like it now lol. took a bit to get the style right but he was patient with revisions',
-    avatar: 'N',
-    color: 'from-rose-600 to-rose-800',
-  },
-  {
-    name: 'studiocraft_',
-    role: 'Studio Lead',
-    rating: 5,
-    text: 'had a datastore issue that was wiping player data. he found the bug fast and fixed it properly. no issues since',
-    avatar: 'S',
-    color: 'from-indigo-600 to-indigo-800',
-  },
-  {
     name: 'zephyr.rbx',
     role: 'Indie Developer',
     rating: 4,
@@ -259,7 +243,7 @@ export default function Testimonials() {
                 <Star key={i} size={14} className={i < 5 ? 'text-gold-400 fill-gold-400' : 'text-gold-400/30'} />
               ))}
             </div>
-            <span className="text-white/50 text-sm">4.7 average across all projects</span>
+            <span className="text-white/50 text-sm">{(testimonials.reduce((n, t) => n + t.rating, 0) / testimonials.length).toFixed(1)} average across all projects</span>
           </motion.div>
         </div>
 
