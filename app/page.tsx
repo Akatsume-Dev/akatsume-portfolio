@@ -4,6 +4,7 @@ import About from '@/components/About'
 import WhyChooseMe from '@/components/WhyChooseMe'
 import Pricing from '@/components/Pricing'
 import Showcase from '@/components/Showcase'
+import Builds from '@/components/Builds'
 import Testimonials from '@/components/Testimonials'
 import Process from '@/components/Process'
 import FAQ from '@/components/FAQ'
@@ -22,6 +23,7 @@ export default function Home() {
         <WhyChooseMe />
         <Pricing />
         <Showcase />
+        <Builds />
         <Testimonials />
         <Process />
         <FAQ />
