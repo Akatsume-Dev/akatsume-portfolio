@@ -38,6 +38,13 @@ const builds: Build[] = [
     tags: ['Sci-Fi', 'Modeling', 'Environment'],
     image: '/builds/asteroid-station.jpg',
   },
+  {
+    title: 'Market Village',
+    desc: 'Colorful medieval village with timber-frame houses, a blacksmith and armory, market stalls, a well, and festival bunting.',
+    tags: ['Map', 'Medieval', 'Stylized', 'Town'],
+    image: '/builds/market-village.jpg',
+    featured: true,
+  },
 ]
 
 export default function Builds() {
