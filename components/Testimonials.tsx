@@ -30,19 +30,19 @@ const testimonials = [
     color: 'from-emerald-600 to-emerald-800',
   },
   {
-    name: 'Private Client',
+    name: 'craft_',
     role: 'Build Commission',
     rating: 5,
     text: 'delivered really fast and the build was super clean. exactly what i needed',
-    avatar: 'P',
+    avatar: 'C',
     color: 'from-rose-600 to-rose-800',
   },
   {
-    name: 'Anonymous Client',
+    name: 'nxvus.dev',
     role: 'Build Commission',
     rating: 5,
     text: 'fast delivery and clean work. he communicated well and asked the right questions before starting, so nothing came out wrong',
-    avatar: 'A',
+    avatar: 'N',
     color: 'from-indigo-600 to-indigo-800',
   },
   {
@@ -261,7 +261,6 @@ export default function Testimonials() {
             </div>
             <span className="text-white/50 text-sm">{(testimonials.reduce((n, t) => n + t.rating, 0) / testimonials.length).toFixed(1)} average across all projects</span>
           </motion.div>
-          <p className="text-white/25 text-xs mt-2">Some clients asked to keep their names private.</p>
         </div>
 
         {/* Reviews grid */}
