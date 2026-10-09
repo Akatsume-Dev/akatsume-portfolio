@@ -35,7 +35,7 @@ function LazyVideo({ src }: { src: string }) {
   )
 }
 
-const filters = ['All', 'Builds', 'Gameplay', 'UI Systems', 'Multiplayer', 'Economy']
+const filters = ['All', 'Gameplay', 'UI Systems', 'Multiplayer', 'Economy']
 
 type Project = {
   id: number
@@ -50,46 +50,6 @@ type Project = {
 }
 
 const projects: Project[] = [
-  {
-    id: 101,
-    title: 'Neon Arena',
-    category: 'Builds',
-    desc: 'Cyberpunk combat arena with neon lighting, tiered stands, cover props, and a glowing central platform.',
-    tags: ['Blender', 'Environment', 'Lighting', 'Sci-Fi'],
-    size: 'large',
-    gradient: 'from-amber-900/40 to-dark-700',
-    image: '/builds/neon-arena.jpg',
-  },
-  {
-    id: 102,
-    title: 'Volcano Fortress',
-    category: 'Builds',
-    desc: 'Dark fortress surrounded by lava, with towers, chained walkways, and a rune-circle courtyard.',
-    tags: ['Blender', 'Map', 'Fantasy', 'Architecture'],
-    size: 'large',
-    gradient: 'from-amber-900/40 to-dark-700',
-    image: '/builds/volcano-fortress.jpg',
-  },
-  {
-    id: 103,
-    title: 'Blood Moon Isles',
-    category: 'Builds',
-    desc: 'Floating gothic islands under a blood moon, with a castle, graveyards, bridges, and lava falls.',
-    tags: ['Blender', 'Map', 'Gothic', 'Atmosphere'],
-    size: 'large',
-    gradient: 'from-amber-900/40 to-dark-700',
-    image: '/builds/blood-moon-isles.jpg',
-  },
-  {
-    id: 104,
-    title: 'Asteroid Station',
-    category: 'Builds',
-    desc: 'Space base built into an asteroid, with docking arms, ships, a landing pad, and lit towers.',
-    tags: ['Blender', 'Sci-Fi', 'Modeling', 'Environment'],
-    size: 'large',
-    gradient: 'from-amber-900/40 to-dark-700',
-    image: '/builds/asteroid-station.jpg',
-  },
   {
     id: 1,
     title: 'Combat System',
@@ -225,8 +185,8 @@ export default function Showcase() {
             transition={{ delay: 0.1 }}
             className="text-[clamp(2rem,5vw,3.5rem)] font-black leading-tight"
           >
-            Systems &amp; Builds I've{' '}
-            <span className="text-gold-gradient">Made</span>
+            Systems I've{' '}
+            <span className="text-gold-gradient">Engineered</span>
           </motion.h2>
         </div>
 
@@ -330,7 +290,7 @@ export default function Showcase() {
           className="text-center mt-14"
         >
           <p className="text-white/30 text-sm mb-2">These are samples. Every project I build is custom to your game.</p>
-          <p className="text-white/20 text-xs mb-5">Note: The Builds are fully my work, made in Blender. The scripting clips only show my code; the maps, VFX, animations, and models in those clips are not my work.</p>
+          <p className="text-white/20 text-xs mb-5">Note: These clips show my scripting. The maps, VFX, animations, and models in them are not my work. My own builds are in the Builds section below.</p>
           <a href="#contact" className="btn-gold">
             Start Your Project
           </a>

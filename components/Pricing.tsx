@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Check, Zap, Crown, Star, Box, Mountain, Castle } from 'lucide-react'
@@ -127,10 +126,115 @@ const plans = [
   },
 ]
 
-export default function Pricing() {
+function PlanGrid({ items, label, sub }: { items: typeof plans; label: string; sub: string }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [tab, setTab] = useState<'scripting' | 'building'>('scripting')
-  const shown = tab === 'scripting' ? plans : buildPlans
+  return (
+    <div className="mb-20 last:mb-0">
+      <div className="flex items-center justify-center gap-4 mb-2">
+        <div className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-transparent to-gold-400/40" />
+        <h3 className="text-xl md:text-2xl font-black tracking-widest uppercase text-gold-gradient">{label}</h3>
+        <div className="h-px flex-1 max-w-[120px] bg-gradient-to-l from-transparent to-gold-400/40" />
+      </div>
+      <p className="text-center text-white/40 text-sm mb-6">{sub}</p>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
+      className="grid md:grid-cols-3 gap-6 items-stretch pt-6"
+    >
+      {items.map((plan, i) => (
+        <motion.div
+          key={plan.name}
+          variants={{
+            hidden: { opacity: 0, y: 50, scale: 0.95 },
+            visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } },
+          }}
+        >
+        <TiltCard
+          className={`relative rounded-sm flex flex-col overflow-hidden h-full ${
+            plan.highlight
+              ? 'border border-gold-400/40 shadow-gold-lg'
+              : 'border border-white/6'
+          }`}
+          style={{
+            background: plan.highlight
+              ? 'linear-gradient(160deg, rgba(201,168,76,0.08) 0%, rgba(10,10,10,1) 50%)'
+              : 'rgba(10,10,10,0.9)',
+          } as React.CSSProperties}
+        >
+          {/* Most popular badge */}
+          {plan.highlight && (
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
+          )}
+          {plan.highlight && (
+            <div className="flex justify-center pt-5 pb-1">
+              <span className="px-4 py-1 text-[10px] font-bold tracking-widest uppercase bg-gold-gradient text-dark-900 rounded-full whitespace-nowrap">
+                Most Popular
+              </span>
+            </div>
+          )}
+
+          <div className="p-8 flex flex-col flex-1">
+            {/* Plan header */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className={`w-10 h-10 rounded-sm flex items-center justify-center ${
+                plan.highlight ? 'bg-gold-400/20 border border-gold-400/40' : 'bg-white/5 border border-white/10'
+              }`}>
+                <plan.icon size={18} className={plan.highlight ? 'text-gold-300' : 'text-white/60'} />
+              </div>
+              <div>
+                <div className="font-bold text-white text-base">{plan.name}</div>
+                <div className="text-white/40 text-xs">{plan.tagline}</div>
+              </div>
+            </div>
+
+            {/* Price */}
+            <div className="mb-8">
+              <div className="text-white/40 text-xs tracking-widest uppercase mb-1">{plan.priceNote}</div>
+              <div className={`text-5xl font-black ${plan.highlight ? 'text-gold-gradient' : 'text-white'}`}>
+                {plan.price}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className={`h-px mb-8 ${plan.highlight ? 'bg-gradient-to-r from-transparent via-gold-400/40 to-transparent' : 'bg-white/6'}`} />
+
+            {/* Features */}
+            <ul className="space-y-3.5 flex-1 mb-8">
+              {plan.features.map(f => (
+                <li key={f} className="flex items-start gap-3">
+                  <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${
+                    plan.highlight ? 'bg-gold-400/20' : 'bg-white/8'
+                  }`}>
+                    <Check size={9} className={plan.highlight ? 'text-gold-400' : 'text-white/50'} />
+                  </div>
+                  <span className="text-sm text-white/65 leading-snug">{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              className={`block text-center py-4 text-sm font-semibold tracking-widest uppercase transition-all duration-300 rounded-sm ${
+                plan.highlight
+                  ? 'btn-gold'
+                  : 'btn-outline-gold'
+              }`}
+            >
+              {plan.cta}
+            </a>
+          </div>
+        </TiltCard>
+        </motion.div>
+      ))}
+    </motion.div>
+    </div>
+  )
+}
+
+export default function Pricing() {
 
   return (
     <section id="pricing" className="relative section-padding">
@@ -175,118 +279,8 @@ export default function Pricing() {
           </motion.p>
         </div>
 
-        {/* Tabs */}
-        <div className="flex justify-center gap-3 -mt-8 mb-8">
-          {(['scripting', 'building'] as const).map(t => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`px-6 py-2 text-xs font-medium tracking-widest uppercase rounded-full border transition-all duration-300 ${
-                tab === t
-                  ? 'bg-gold-400 text-dark-900 border-gold-400 font-bold'
-                  : 'border-white/10 text-white/50 hover:border-gold-400/40 hover:text-white/80'
-              }`}
-            >
-              {t === 'scripting' ? 'Scripting' : 'Building (Blender)'}
-            </button>
-          ))}
-        </div>
-
-        {/* Cards */}
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-          className="grid md:grid-cols-3 gap-6 items-stretch pt-6"
-        >
-          {shown.map((plan, i) => (
-            <motion.div
-              key={tab + plan.name}
-              variants={{
-                hidden: { opacity: 0, y: 50, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } },
-              }}
-            >
-            <TiltCard
-              className={`relative rounded-sm flex flex-col overflow-hidden h-full ${
-                plan.highlight
-                  ? 'border border-gold-400/40 shadow-gold-lg'
-                  : 'border border-white/6'
-              }`}
-              style={{
-                background: plan.highlight
-                  ? 'linear-gradient(160deg, rgba(201,168,76,0.08) 0%, rgba(10,10,10,1) 50%)'
-                  : 'rgba(10,10,10,0.9)',
-              } as React.CSSProperties}
-            >
-              {/* Most popular badge */}
-              {plan.highlight && (
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
-              )}
-              {plan.highlight && (
-                <div className="flex justify-center pt-5 pb-1">
-                  <span className="px-4 py-1 text-[10px] font-bold tracking-widest uppercase bg-gold-gradient text-dark-900 rounded-full whitespace-nowrap">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
-              <div className="p-8 flex flex-col flex-1">
-                {/* Plan header */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-10 h-10 rounded-sm flex items-center justify-center ${
-                    plan.highlight ? 'bg-gold-400/20 border border-gold-400/40' : 'bg-white/5 border border-white/10'
-                  }`}>
-                    <plan.icon size={18} className={plan.highlight ? 'text-gold-300' : 'text-white/60'} />
-                  </div>
-                  <div>
-                    <div className="font-bold text-white text-base">{plan.name}</div>
-                    <div className="text-white/40 text-xs">{plan.tagline}</div>
-                  </div>
-                </div>
-
-                {/* Price */}
-                <div className="mb-8">
-                  <div className="text-white/40 text-xs tracking-widest uppercase mb-1">{plan.priceNote}</div>
-                  <div className={`text-5xl font-black ${plan.highlight ? 'text-gold-gradient' : 'text-white'}`}>
-                    {plan.price}
-                  </div>
-                </div>
-
-                {/* Divider */}
-                <div className={`h-px mb-8 ${plan.highlight ? 'bg-gradient-to-r from-transparent via-gold-400/40 to-transparent' : 'bg-white/6'}`} />
-
-                {/* Features */}
-                <ul className="space-y-3.5 flex-1 mb-8">
-                  {plan.features.map(f => (
-                    <li key={f} className="flex items-start gap-3">
-                      <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${
-                        plan.highlight ? 'bg-gold-400/20' : 'bg-white/8'
-                      }`}>
-                        <Check size={9} className={plan.highlight ? 'text-gold-400' : 'text-white/50'} />
-                      </div>
-                      <span className="text-sm text-white/65 leading-snug">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a
-                  href="#contact"
-                  className={`block text-center py-4 text-sm font-semibold tracking-widest uppercase transition-all duration-300 rounded-sm ${
-                    plan.highlight
-                      ? 'btn-gold'
-                      : 'btn-outline-gold'
-                  }`}
-                >
-                  {plan.cta}
-                </a>
-              </div>
-            </TiltCard>
-            </motion.div>
-          ))}
-        </motion.div>
+        <PlanGrid items={plans} label="Scripting" sub="Game systems, UI, data, and multiplayer in Luau." />
+        <PlanGrid items={buildPlans} label="Building" sub="Custom 3D models and maps made in Blender, ready for Roblox." />
 
         {/* Note */}
         <motion.p
