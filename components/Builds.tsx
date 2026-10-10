@@ -45,6 +45,13 @@ const builds: Build[] = [
     image: '/builds/market-village.jpg',
     featured: true,
   },
+  {
+    title: 'Grand Hall',
+    desc: 'Victorian manor hall with a crystal chandelier, grand staircase, upper balcony, checkered marble floor, and warm candlelight.',
+    tags: ['Interior', 'Victorian', 'Lighting', 'Architecture'],
+    image: '/builds/grand-hall.jpg',
+    featured: true,
+  },
 ]
 
 export default function Builds() {
