@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
-type Build = { title: string; desc: string; tags: string[]; image: string; featured?: boolean }
+type Build = { title: string; desc: string; tags: string[]; image: string; images?: string[]; featured?: boolean }
 
 const builds: Build[] = [
   {
@@ -50,18 +50,38 @@ const builds: Build[] = [
     desc: 'Victorian manor hall with a crystal chandelier, grand staircase, upper balcony, checkered marble floor, and warm candlelight.',
     tags: ['Interior', 'Victorian', 'Lighting', 'Architecture'],
     image: '/builds/grand-hall.jpg',
+  },
+  {
+    title: 'Ancient Battleground',
+    desc: 'Open arena on a ruined stone plaza, with torch-lit pillars, banner gates, waterfalls, and cliffs, made for PvP fights.',
+    tags: ['Battleground', 'Map', 'PvP', 'Ruins'],
+    image: '/builds/ancient-battleground.jpg',
+  },
+  {
+    title: 'Midnight Camp',
+    desc: 'Horror forest camp at night, with floodlights cutting through fog, a water tower, tents, rusty barrels, and a gated path.',
+    tags: ['Horror', 'Map', 'Atmosphere', 'Lighting'],
+    image: '/builds/midnight-camp-1.jpg',
+    images: ['/builds/midnight-camp-1.jpg', '/builds/midnight-camp-2.jpg', '/builds/midnight-camp-3.jpg'],
     featured: true,
   },
 ]
 
 export default function Builds() {
   const [open, setOpen] = useState<Build | null>(null)
+  const [idx, setIdx] = useState(0)
+  const pics = open ? open.images ?? [open.image] : []
+  const step = (d: number) => setIdx(i => (i + d + pics.length) % pics.length)
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(null)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(null)
+      if (e.key === 'ArrowRight') step(1)
+      if (e.key === 'ArrowLeft') step(-1)
+    }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [])
+  })
 
   return (
     <section id="builds" className="relative section-padding">
@@ -108,7 +128,7 @@ export default function Builds() {
             <motion.button
               key={b.title}
               type="button"
-              onClick={() => setOpen(b)}
+              onClick={() => { setOpen(b); setIdx(0) }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -137,6 +157,11 @@ export default function Builds() {
               <span className="absolute top-4 right-4 text-[10px] px-3 py-1 rounded-full border border-gold-400/30 text-gold-300 bg-dark-900/70 tracking-wide">
                 Blender
               </span>
+              {b.images && b.images.length > 1 && (
+                <span className="absolute top-4 left-4 text-[10px] px-3 py-1 rounded-full border border-white/20 text-white/80 bg-dark-900/70 tracking-wide">
+                  {b.images.length} photos
+                </span>
+              )}
             </motion.button>
           ))}
         </div>
@@ -176,7 +201,14 @@ export default function Builds() {
               className="max-w-6xl w-full"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={open.image} alt={open.title} draggable={false} onContextMenu={e => e.preventDefault()} onClick={e => e.stopPropagation()} className="w-full h-auto max-h-[80vh] object-contain rounded-sm" />
+              <img src={pics[idx]} alt={open.title} draggable={false} onContextMenu={e => e.preventDefault()} onClick={e => e.stopPropagation()} className="w-full h-auto max-h-[80vh] object-contain rounded-sm" />
+              {pics.length > 1 && (
+                <div className="flex items-center justify-center gap-4 mt-4" onClick={e => e.stopPropagation()}>
+                  <button type="button" aria-label="Previous" onClick={() => step(-1)} className="w-10 h-10 rounded-full border border-white/20 text-white/80 hover:border-gold-400 hover:text-gold-300">&#8249;</button>
+                  <span className="text-white/60 text-sm">{idx + 1} / {pics.length}</span>
+                  <button type="button" aria-label="Next" onClick={() => step(1)} className="w-10 h-10 rounded-full border border-white/20 text-white/80 hover:border-gold-400 hover:text-gold-300">&#8250;</button>
+                </div>
+              )}
               <figcaption className="text-center mt-4">
                 <div className="text-white font-bold">{open.title}</div>
                 <div className="text-white/50 text-sm">{open.desc}</div>
