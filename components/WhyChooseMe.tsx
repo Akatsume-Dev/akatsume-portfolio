@@ -7,8 +7,8 @@ const reasons = [
   { icon: ShieldCheck, title: 'I Deliver on Time', desc: 'Script or build, I set a deadline and I stick to it. If something comes up, I tell you early. No last-minute surprises.' },
   { icon: MessageCircle, title: 'You See Progress', desc: 'Regular updates, test clips for systems and WIP renders for builds. You know where things are at without having to ask.' },
   { icon: Cpu, title: 'Clean Code That Runs', desc: 'Low lag, no memory leaks, organized and easy to build on. I test before I send. Your players should not feel the backend.' },
-  { icon: Star, title: 'Builds Made for Roblox', desc: 'Low tri counts, clean UVs, proper collisions. My models import cleanly and run well on mobile, not just look good in a render.' },
-  { icon: Clock, title: 'Scripter and Builder in One', desc: 'I can build the map and script what happens in it. One person, one vision, no back-and-forth between two freelancers.' },
+  { icon: Star, title: 'Builds and Models Made for Roblox', desc: 'Low tri counts, clean UVs, proper collisions. My maps and models import cleanly and run well on mobile, not just look good in a render.' },
+  { icon: Clock, title: 'Scripter, Builder and Modeler in One', desc: 'I can build the map, model the weapons and armor, and script how it all plays. One person, one vision, no back-and-forth between three freelancers.' },
   { icon: HeartHandshake, title: 'I Fix What Is Wrong', desc: 'If something is off after delivery, whether it is a bug or a mesh, I sort it out. I do not disappear once payment is done.' },
 ]
 
@@ -45,7 +45,7 @@ export default function WhyChooseMe() {
               transition={{ delay: 0.2 }}
               className="text-white/40 text-sm lg:text-right lg:pb-2 max-w-xs"
             >
-              A lot of scripters and builders are out there. Here is what makes working with me different.
+              A lot of scripters, builders and modelers are out there. Here is what makes working with me different.
             </motion.p>
           </div>
         </div>

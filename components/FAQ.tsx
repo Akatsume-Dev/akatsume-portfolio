@@ -7,7 +7,7 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     q: 'How much do your services cost?',
-    a: 'Depends on what you need. Simple scripts start from $25, larger systems from $75, full game dev from $150+. For builds, props start from $30, scenes and small maps from $300, and full maps from $800+. Send me a message and I will give you a straight price.',
+    a: 'Depends on what you need. Simple scripts start from $25, larger systems from $75, full game dev from $150+. For builds, rooms start from $150, scenes and small maps from $300, and full maps from $800+. For models, simple models start from $30, detailed weapons and armor from $75, and full sets from $200+. Send me a message and I will give you a straight price.',
   },
   {
     q: 'How long does a project take?',
@@ -30,8 +30,8 @@ const faqs = [
     a: 'Yes. I can add to what is already there, clean things up, or fix bugs. I look at the existing code first before touching anything.',
   },
   {
-    q: 'Do you do building and 3D models too?',
-    a: 'Yes. I model and build in Blender, from props and assets to full builds, ready to import into Roblox Studio. I can also script them so everything works together.',
+    q: 'Do you do building and 3D modeling too?',
+    a: 'Yes. I have been building and modeling in Blender for 2 years: maps, scenes and interiors, plus weapons, armor and accessories fitted to the Roblox avatar. Everything is ready to import into Roblox Studio, and I can script it so it all works together.',
   },
   {
     q: 'Do I get the source code?',

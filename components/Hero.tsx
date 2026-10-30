@@ -113,7 +113,7 @@ function GoldStreaks() {
 }
 
 /* ─── Hero ─── */
-const titleWords = ['ROBLOX', 'SCRIPTER', 'BUILDER']
+const titleWords = ['SCRIPTER', 'BUILDER', 'MODELER']
 
 export default function Hero() {
   const mouseX = useMotionValue(0)
@@ -231,7 +231,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 1 }}
               className="text-[clamp(0.9rem,1.5vw,1.1rem)] text-white/50 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-4 font-light"
             >
-              3 years scripting game systems, UIs, and custom mechanics for Roblox, plus 2 years building 3D models and maps in Blender. Clean work, on time, no headaches.
+              3 years scripting game systems and UIs for Roblox, plus 2 years building maps and modeling weapons, armor and accessories in Blender. Clean work, on time, no headaches.
             </motion.p>
           )}
 

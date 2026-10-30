@@ -175,7 +175,7 @@ export default function Showcase() {
             className="flex items-center justify-center gap-3 mb-6"
           >
             <div className="h-px w-12 bg-gold-400/60" />
-            <span className="text-gold-400 text-xs tracking-widest uppercase font-medium">Work</span>
+            <span className="text-gold-400 text-xs tracking-widest uppercase font-medium">Scripting</span>
             <div className="h-px w-12 bg-gold-400/60" />
           </motion.div>
           <motion.h2
@@ -290,7 +290,7 @@ export default function Showcase() {
           className="text-center mt-14"
         >
           <p className="text-white/30 text-sm mb-2">These are samples. Every project I build is custom to your game.</p>
-          <p className="text-white/20 text-xs mb-5">Note: These clips show my scripting. The maps, VFX, animations, and models in them are not my work. My own builds are in the Builds section below.</p>
+          <p className="text-white/20 text-xs mb-5">Note: These clips show my scripting. The maps, VFX, animations, and models in them are not my work. My own builds and models are in the sections below.</p>
           <a href="#contact" className="btn-gold">
             Start Your Project
           </a>

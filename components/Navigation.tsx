@@ -6,10 +6,10 @@ import { Menu, X } from 'lucide-react'
 
 const links = [
   { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'Systems', href: '#showcase' },
   { label: 'Builds', href: '#builds' },
+  { label: 'Models', href: '#models' },
   { label: 'Contact', href: '#contact' },
 ]
 

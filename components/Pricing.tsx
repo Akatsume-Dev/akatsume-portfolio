@@ -2,23 +2,79 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Check, Zap, Crown, Star, Box, Mountain, Castle } from 'lucide-react'
+import { Check, Zap, Crown, Star, Box, Mountain, Castle, Home, Sword, Shield } from 'lucide-react'
 import TiltCard from './TiltCard'
 
-const buildPlans = [
+const modelPlans = [
   {
     icon: Box,
-    name: 'Props & Assets',
-    tagline: 'Single models or small sets',
+    name: 'Simple Model',
+    tagline: 'Props, tools, simple weapons',
     price: '$30',
     priceNote: 'Starting from',
     features: [
-      'Custom props, furniture, or decor',
+      'One prop, tool, or simple weapon',
       'Modeled & textured in Blender',
-      'Optimized for Roblox (low tri count)',
+      'Low tri count, clean UVs',
       'Ready-to-import FBX / OBJ',
       'Up to 2 revisions',
       'Delivery within 2–4 days',
+    ],
+    cta: 'Get Started',
+    highlight: false,
+  },
+  {
+    icon: Sword,
+    name: 'Detailed Model',
+    tagline: 'Hero weapons, armor, accessories',
+    price: '$75',
+    priceNote: 'Starting from',
+    features: [
+      'Everything in Simple Model',
+      'Detailed weapon, armor piece, or accessory',
+      'Engraving, gems, glow & fine detail',
+      'Fitted to the Roblox avatar',
+      'Renders for your showcase',
+      'Up to 4 revisions',
+      'Delivery within 4–7 days',
+    ],
+    cta: 'Hire Me Now',
+    highlight: true,
+  },
+  {
+    icon: Shield,
+    name: 'Full Set',
+    tagline: 'Matching sets and collections',
+    price: '$200+',
+    priceNote: 'Starting from',
+    features: [
+      'Everything in Detailed Model',
+      'Multiple pieces in one style',
+      'e.g. armor + weapon + cape',
+      'Consistent materials across the set',
+      'Unlimited revisions',
+      'Priority delivery',
+      'Extended support (14 days)',
+    ],
+    cta: 'Let\'s Talk',
+    highlight: false,
+  },
+]
+
+const buildPlans = [
+  {
+    icon: Home,
+    name: 'Room / Interior',
+    tagline: 'Single rooms and interiors',
+    price: '$150',
+    priceNote: 'Starting from',
+    features: [
+      'One room or interior space',
+      'Custom props made to match',
+      'Lighting & mood setup',
+      'Optimized for Roblox',
+      'Up to 3 revisions',
+      'Delivery within 4–7 days',
     ],
     cta: 'Get Started',
     highlight: false,
@@ -30,7 +86,7 @@ const buildPlans = [
     price: '$300',
     priceNote: 'Starting from',
     features: [
-      'Everything in Props & Assets',
+      'Everything in Room / Interior',
       'Full scene or small map',
       'Custom models made for your game',
       'Lighting & atmosphere setup',
@@ -280,7 +336,8 @@ export default function Pricing() {
         </div>
 
         <PlanGrid items={plans} label="Scripting" sub="Game systems, UI, data, and multiplayer in Luau." />
-        <PlanGrid items={buildPlans} label="Building" sub="Custom 3D models and maps made in Blender, ready for Roblox." />
+        <PlanGrid items={buildPlans} label="Building" sub="Rooms, scenes and full maps made in Blender, ready for Roblox." />
+        <PlanGrid items={modelPlans} label="Modeling" sub="Weapons, armor and accessories modeled and textured in Blender." />
 
         {/* Note */}
         <motion.p

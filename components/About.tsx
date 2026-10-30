@@ -70,17 +70,17 @@ export default function About() {
             </motion.div>
 
             <motion.h2 variants={itemVariants} className="text-[clamp(2rem,5vw,3.5rem)] font-black leading-tight mb-8">
-              3 Years Building{' '}
-              <span className="text-gold-gradient">Roblox Systems</span>
+              Scripts, Worlds{' '}
+              <span className="text-gold-gradient">and Models</span>
               <br />That Actually Work.
             </motion.h2>
 
             <motion.div variants={itemVariants} className="space-y-5 text-white/60 leading-relaxed text-lg">
               <p>
-                I'm <strong className="text-white font-semibold">Akatsume</strong>, a Roblox scripter with 3 years of experience building the systems behind games, and a builder with 2 years of experience in Blender. I focus on writing code that holds up over time, not just code that works once.
+                I'm <strong className="text-white font-semibold">Akatsume</strong>, a Roblox scripter with 3 years of experience building the systems behind games, and a builder and 3D modeler with 2 years of experience in Blender. Whether it is code, a map or a model, I make it to hold up over time, not just to work once.
               </p>
               <p>
-                I have worked on gameplay, data, UI, multiplayer and more. I also model and build in Blender, so I can handle both the systems and the 3D assets your game needs. I know what makes a Roblox game feel good to play and I build with that in mind.
+                On the scripting side I have worked on gameplay, data, UI, multiplayer and more. In Blender I build maps, scenes and interiors, and model weapons, armor and accessories fitted to the Roblox avatar. I know what makes a Roblox game feel good to play and I build with that in mind.
               </p>
               <p>
                 Based in the <strong className="text-white/80">Eastern timezone (ET)</strong>, I speak both <strong className="text-white/80">French and English</strong> so communication is never an issue.
@@ -88,7 +88,7 @@ export default function About() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mt-8">
-              {['Lua / Luau', 'Roblox Studio', 'Blender', '3D Modeling', 'Game Design', 'Systems Architecture', 'ET Timezone'].map(tag => (
+              {['Lua / Luau', 'Roblox Studio', 'Blender', 'Building', '3D Modeling', 'Game Design', 'Systems Architecture', 'ET Timezone'].map(tag => (
                 <span key={tag} className="px-4 py-1.5 text-xs text-gold-300 border border-gold-400/20 rounded-full tracking-wide font-medium bg-gold-400/5">
                   {tag}
                 </span>
