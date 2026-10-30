@@ -39,6 +39,13 @@ const models: Model[] = [
     tags: ['Japanese', 'Gold Detail', 'Textured'],
     images: views('katana', 4),
   },
+  {
+    name: 'Horned Stalker',
+    type: 'Creature',
+    desc: 'Sculpted horror creature with a spiked horn crown, six glowing eyes, a jaw full of teeth, scaled skin, long clawed arms and a spined tail.',
+    tags: ['Sculpted', 'Horror', 'Emissive Eyes'],
+    images: views('horned-stalker', 7),
+  },
 ]
 
 export default function Models() {
