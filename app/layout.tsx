@@ -22,19 +22,19 @@ const jetbrains = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Akatsume , Roblox Scripter & Builder',
-  description: 'Roblox scripting and Blender building. 3 years building game systems, UI, and multiplayer mechanics, plus 2 years of Blender building: custom 3D models and maps. Hire a professional Roblox developer today.',
-  keywords: ['Roblox scripter', 'Roblox developer', 'Roblox scripting', 'Lua programmer', 'hire Roblox dev', 'Roblox game development', 'Roblox builder', 'Blender 3D modeling', 'Roblox 3D models'],
+  title: 'Akatsume , Roblox Scripter, Builder & Modeler',
+  description: 'Roblox scripting, building and 3D modeling. 3 years building game systems, UI, and multiplayer mechanics, plus 2 years of Blender: maps, scenes, weapons, armor and accessories. Hire a professional Roblox developer today.',
+  keywords: ['Roblox scripter', 'Roblox developer', 'Roblox scripting', 'Lua programmer', 'hire Roblox dev', 'Roblox game development', 'Roblox builder', 'Blender 3D modeling', 'Roblox 3D models', 'Roblox 3D modeler', 'Roblox weapon models', 'Roblox UGC accessories'],
   authors: [{ name: 'Akatsume' }],
   openGraph: {
-    title: 'Akatsume , Roblox Scripter & Builder',
-    description: 'Roblox scripting and Blender building. Turning ideas into elite Roblox experiences.',
+    title: 'Akatsume , Roblox Scripter, Builder & Modeler',
+    description: 'Roblox scripting, building and 3D modeling. Turning ideas into elite Roblox experiences.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Akatsume , Roblox Scripter & Builder',
-    description: 'Roblox scripting and Blender building. 3 years of crafting elite game experiences.',
+    title: 'Akatsume , Roblox Scripter, Builder & Modeler',
+    description: 'Roblox scripting, building and 3D modeling. 3 years of crafting elite game experiences.',
   },
   robots: {
     index: true,
